@@ -1,0 +1,1 @@
+E:\Programming\Own Projects\C#\rpg-xna-project\RpgGame\RpgGameContent\obj\x86\Debug\RpgGameContent.contentprojResolveAssemblyReference.cache

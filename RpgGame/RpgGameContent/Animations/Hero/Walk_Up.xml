@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Loop="true">
+  <SpriteSources>
+    <SpriteSheetSource Path="walk_down_up.png" ID="0" SingleSpriteWidth="31" SingleSpriteHeight="50" SpriteAmount="6" />
+  </SpriteSources>
+  <Frames>
+    <Frame Duration="200">
+      <Sprites>
+        <Sprite X="0" Y="0" ID="1" />
+      </Sprites>
+    </Frame>
+    <Frame Duration="200">
+      <Sprites>
+        <Sprite X="0" Y="0" ID="2" />
+      </Sprites>
+    </Frame>
+    <Frame Duration="200">
+      <Sprites>
+        <Sprite X="-2" Y="0" ID="3" />
+      </Sprites>
+    </Frame>
+    <Frame Duration="200">
+      <Sprites>
+        <Sprite X="-4" Y="-1" ID="4" />
+      </Sprites>
+    </Frame>
+    <Frame Duration="200">
+      <Sprites>
+        <Sprite X="-2" Y="-2" ID="5" />
+      </Sprites>
+    </Frame>
+    <Frame Duration="200">
+      <Sprites>
+        <Sprite X="-3" Y="-1" ID="6" />
+      </Sprites>
+    </Frame>
+  </Frames>
+</Animation>

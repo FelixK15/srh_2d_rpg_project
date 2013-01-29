@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Frames>
+    <Frame Duration="0">
+      <Sprites>
+        <Sprite ImagePath="attack1.png" X="98" Y="-65" />
+      </Sprites>
+    </Frame>
+    <Frame Duration="0">
+      <Sprites>
+        <Sprite ImagePath="attack1.png" X="-3" Y="2" />
+      </Sprites>
+    </Frame>
+  </Frames>
+</Animation>
