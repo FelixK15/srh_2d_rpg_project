@@ -97,8 +97,6 @@ namespace RpgGame.Menu
             {
                 go.Draw(ref batch);
             }
-
-            //GraphicManager.Graphics.Add(new GraphicHelper((int)Items.ElementAt<GameObject>(CurrentItemIndex).Position.X, (int)Items.ElementAt<GameObject>(CurrentItemIndex).Position.Y, Picker));
         }
 
         private void _AlignItems(bool clockwise)

@@ -224,6 +224,7 @@ namespace RpgGame.Tools
 
                         //DeepCopy tile
                         GameObject layerTile = new GameObject(ref tile);
+
                         layerTile.Width = World.TileWidth;
                         layerTile.Height = World.TileHeight;
 
@@ -328,6 +329,22 @@ namespace RpgGame.Tools
                                 if (PropertyName == "invisible")
                                 {
                                     newObject.GetComponent<RenderableComponent>().Active = false;
+                                }
+
+                                if (PropertyName == "npc")
+                                {
+                                    String folder = "Characters\\" + PropertyValue + "\\";
+                                    newObject.AddComponent(new AnimationComponent(new List<AbstractAnimation>()
+                                    {
+                                        new SpritesheetAnimation("WalkDown",folder+"walk_down",16,36,200,4,AbstractAnimation.RepeatBehaviour.LoopAnimation),
+                                        new SpritesheetAnimation("WalkUp",folder+"walk_up",16,35,200,4,AbstractAnimation.RepeatBehaviour.LoopAnimation),
+                                        new SpritesheetAnimation("WalkLeft",folder+"walk_left",16,35,200,4,AbstractAnimation.RepeatBehaviour.LoopAnimation),
+                                        new SpritesheetAnimation("WalkRight",folder+"walk_right",16,35,200,4,AbstractAnimation.RepeatBehaviour.LoopAnimation),
+                                        new CustomAnimation("LookDown",new string[]{folder+"look_down"},new double[]{0},AbstractAnimation.RepeatBehaviour.SingleAnimation),
+                                        new CustomAnimation("LookUp",new string[]{folder+"look_up"},new double[]{0},AbstractAnimation.RepeatBehaviour.SingleAnimation),
+                                        new CustomAnimation("LookLeft",new string[]{folder+"look_left"},new double[]{0},AbstractAnimation.RepeatBehaviour.SingleAnimation),
+                                        new CustomAnimation("LookRight",new string[]{folder+"look_right"},new double[]{0},AbstractAnimation.RepeatBehaviour.SingleAnimation)
+                                    }));
                                 }
                             }
                         }

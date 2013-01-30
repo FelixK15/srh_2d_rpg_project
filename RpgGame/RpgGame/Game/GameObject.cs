@@ -83,6 +83,8 @@ namespace RpgGame
             //Update the position of the player.
             Position += Velocity;
 
+            _SetOrientation();
+
             //All components are getting updated first.
             foreach (IGameObjectComponent c in Components)
             {
@@ -127,19 +129,43 @@ namespace RpgGame
             return default(T);
         }
 
-        public List<IGameObjectComponent> GetComponents<T>()
+        public List<T> GetComponents<T>()
         {
-            List<IGameObjectComponent> results = new List<IGameObjectComponent>();
+            List<T> results = new List<T>();
 
             foreach (IGameObjectComponent c in Components)
             {
                 if (c is T)
                 {
-                    results.Add(c);
+                    results.Add((T)c);
                 }
             }
 
             return results;
+        }
+
+        private void _SetOrientation()
+        {
+            float x = Orientation.X;
+            float y = Orientation.Y;
+
+            if (Velocity.X < 0)
+            {
+                x = -1;
+            }
+            else if (Velocity.X > 0)
+            {
+                x = 1;
+            }else if (Velocity.Y < 0)
+            {
+                y = -1;
+            }
+            else if (Velocity.Y > 0)
+            {
+                y = 1;
+            }
+
+            Orientation = new Vector2(x, y);
         }
     }
 }

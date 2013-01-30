@@ -108,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\InteractionEvent.cs" />
     <Compile Include="Tools\Camera.cs" />
     <Compile Include="Tools\CollisionChecker.cs" />
     <Compile Include="Events\Event.cs" />

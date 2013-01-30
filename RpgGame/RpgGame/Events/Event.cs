@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RpgGame.Events
 {
-    class Event
+    public class Event
     {
         public enum Types
         {
@@ -25,7 +25,8 @@ namespace RpgGame.Events
             RINGMENU_ZOOM_OUT,
             RINGMENU_ZOOM_IN,
 
-            PLAYER_MOVED
+            PLAYER_MOVED,
+            INTERACTION
         }
 
         private Types m_tEventType;

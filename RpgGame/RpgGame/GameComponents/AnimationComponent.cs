@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace RpgGame.GameComponents
 {
-    class AnimationComponent : BaseGameComponent
+    public class AnimationComponent : BaseGameComponent
     {
         private List<AbstractAnimation> AnimationList { get; set; }
         private AbstractAnimation CurrentAnimation { get; set; }
@@ -27,6 +27,17 @@ namespace RpgGame.GameComponents
             CurrentAnimation = anim;
         }
 
+        public AnimationComponent(List<AbstractAnimation> animList)
+            : this()
+        {
+            foreach (AbstractAnimation anim in animList)
+            {
+                AnimationList.Add(anim);
+            }
+
+            CurrentAnimation = AnimationList.Last<AbstractAnimation>();
+        }
+
         public AbstractAnimation getAnimationPerName(string animationName)
         {
             return AnimationList.Find(o => o.Name == animationName);
@@ -37,6 +48,20 @@ namespace RpgGame.GameComponents
             if (AnimationList.Find(o => o.Name == anim.Name) != null) return false;
             AnimationList.Add(anim);
             return true;
+        }
+
+        public bool addAnimation(AbstractAnimation anim, bool removeAnimWithSameName)
+        {
+            if (removeAnimWithSameName)
+            {
+                AbstractAnimation prevAnim = AnimationList.Find(a => a.Name == anim.Name);
+                if (prevAnim != null)
+                {
+                    AnimationList.Remove(prevAnim);
+                }
+            }
+
+            return addAnimation(anim);
         }
 
         public bool setCurrentAnimation(string animationName)
@@ -63,9 +88,15 @@ namespace RpgGame.GameComponents
            
         public override void Update(GameTime gameTime)
         {
-            CurrentAnimation.Update(gameTime);
-            Parent.Width = CurrentAnimation.CurrentFrame.texture.Width;
-            Parent.Height = CurrentAnimation.CurrentFrame.texture.Height;
+            if (CurrentAnimation != null)
+            {
+                CurrentAnimation.Update(gameTime);
+                if (CurrentAnimation.CurrentFrame != null)
+                {
+                    Parent.Width = CurrentAnimation.CurrentFrame.texture.Width;
+                    Parent.Height = CurrentAnimation.CurrentFrame.texture.Height;
+                }
+            }
         }
 
         public override void Draw(ref SpriteBatch batch)

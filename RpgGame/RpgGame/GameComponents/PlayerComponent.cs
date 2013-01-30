@@ -15,7 +15,10 @@ namespace RpgGame.GameComponents
     {
         private PlayerIndex Player { get; set; }
         private int ActionCounter { get; set; }
-        private int ColorCounter {get;set;}
+        private int ColorCounter { get; set; }
+        private int InteractionCooldown { get; set; }
+
+        private Rectangle InteractionRect { get; set; }
 
         public PlayerComponent(PlayerIndex player)
             : base("PlayerComponent")
@@ -28,34 +31,38 @@ namespace RpgGame.GameComponents
         {
             Parent.Velocity = Vector2.Zero;
             AnimationComponent animComponent = Parent.GetComponent<AnimationComponent>();
+            CollisionComponent collComponent = Parent.GetComponent<CollisionComponent>();
 
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                Parent.Velocity = new Vector2(Parent.Velocity.X, -1);
-                Parent.Orientation = new Vector2(0, -1);
+                Parent.Velocity = new Vector2(Parent.Velocity.X, -2);
             }
             
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                Parent.Velocity = new Vector2(Parent.Velocity.X, 1);
-                Parent.Orientation = new Vector2(0, 1);
+                Parent.Velocity = new Vector2(Parent.Velocity.X, 2);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                Parent.Velocity = new Vector2(-1, Parent.Velocity.Y);
-                Parent.Orientation = new Vector2(-1, 0);
+                Parent.Velocity = new Vector2(-2, Parent.Velocity.Y);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                Parent.Velocity = new Vector2(1, Parent.Velocity.Y);
-                Parent.Orientation = new Vector2(1, 0);
+                Parent.Velocity = new Vector2(2, Parent.Velocity.Y);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                ActionCounter = 0;
+                CollisionComponent component = Parent.GetComponent<CollisionComponent>();
+                if(component != null)
+                {
+                    if (InteractionCooldown <= 0)
+                    {
+                        EventManager.AddEventToQuery(new InteractionEvent(_CreateInteractionRect(), Parent));
+                    }
+                }
             }
 
             if (Parent.Orientation.X == 1)
@@ -100,16 +107,21 @@ namespace RpgGame.GameComponents
                     animComponent.setCurrentAnimation("LookUp");
                 }
             }
-
-            if (ActionCounter < 100)
-            {
-                ++ActionCounter;
-            }
         }
 
         public override void Draw(ref SpriteBatch batch)
         {
-    
+            if (InteractionRect.Width > 0 && InteractionRect.Height > 0)
+            {
+                Texture2D test = new Texture2D(GraphicSettings.GraphicDevice, InteractionRect.Width, InteractionRect.Height);
+                Color[] data = new Color[test.Width * test.Height];
+                for (int i = 0; i < data.Length; ++i)
+                {
+                    data[i] = new Color(0.5f, 0.5f, 0.5f, 1f);
+                }
+                test.SetData<Color>(data);
+                batch.Draw(test, InteractionRect, Color.White);
+            }
         }
 
         public override void Init()
@@ -120,6 +132,19 @@ namespace RpgGame.GameComponents
         public override BaseGameComponent Copy()
         {
             return null;
+        }
+
+        private Rectangle _CreateInteractionRect()
+        {
+            CollisionComponent component = Parent.GetComponent<CollisionComponent>();
+
+            int width = 10;
+            int height = 10;
+
+            int x = (int)(component.Position.X + component.Offset.X) + (int)(Parent.Orientation.X * width);
+            int y = (int)(component.Position.Y + component.Offset.Y) + (int)(Parent.Orientation.Y * height);
+
+            return new Rectangle(x, y, width, height);
         }
     }
 }
