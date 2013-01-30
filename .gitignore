@@ -1,0 +1,7 @@
+$ cat .gitignore
+
+.\RpgGame\RpgGame\bin\*
+.\RpgGame\RpgGame\obj\*
+
+*.csproj.user
+*.cachefile
