@@ -36,4 +36,9 @@ public class test
     {
         Console.Out.WriteLine("OnTriggerLeave" + gameObject.Name);
     }
+
+    public void OnInteraction(GameObject gameObject)
+    {
+
+    }
 }

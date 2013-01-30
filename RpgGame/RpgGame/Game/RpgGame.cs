@@ -86,13 +86,10 @@ namespace RpgGame
             test.Position = new Vector2(50, 200);
 
             // test.AddComponent(new ScriptComponent("test.lua"));
-            test.AddComponent(new MoveableComponent(0.15f));
             test.AddComponent(new PlayerComponent(PlayerIndex.One));
             test.AddComponent(new CollisionComponent(CollisionComponent.CollisionType.DYNAMIC, new Vector2(0, 20), 16, 16,null));
             test.AddComponent(new AnimationComponent());
-            test.AddComponent(new AudioComponent());
-            //test.GetComponent<AudioComponent>().addAudio(new AudioObject("walk", "footsteps-6", AudioObject.RepeatBehaviour.SinglePlay));
-            test.GetComponent<AudioComponent>().setCurrentAudio("walk");
+
             test.GetComponent<AnimationComponent>().addAnimation(new SpritesheetAnimation("WalkDown", "Characters//Hero//walk_down",
                                                                  18, 36, 200, 5, AbstractAnimation.RepeatBehaviour.LoopAnimation));
             test.GetComponent<AnimationComponent>().addAnimation(new SpritesheetAnimation("WalkLeft", "Characters//Hero//walk_left",
@@ -111,73 +108,6 @@ namespace RpgGame
             test.GetComponent<AnimationComponent>().addAnimation(new CustomAnimation("LookRight", new string[] { "Characters//Hero//stand_right" }, new double[] { 0 },
                                                         AbstractAnimation.RepeatBehaviour.SingleAnimation));
             test.GetComponent<AnimationComponent>().setCurrentAnimation("LookDown");
-            
-            test.AddComponent(new EventComponent(Event.Types.KEYBOARD_PRESSED, delegate(GameObject Object, Event GameEvent)
-                {
-                    KeyPressedEvent e = (KeyPressedEvent)GameEvent;
-                    if (e.PressedKey == Keys.Down)
-                    {
-                        Object.Velocity = new Vector2(Object.Velocity.X, 1f);
-                        Object.GetComponent<AnimationComponent>().setCurrentAnimation("WalkDown");
-                        Object.Orientation = new Vector2(0, 1);
-                    }
-
-                    if (e.PressedKey == Keys.Up)
-                    {
-                        Object.Velocity = new Vector2(Object.Velocity.X, -1f);
-                        Object.GetComponent<AnimationComponent>().setCurrentAnimation("WalkUp");
-                        Object.Orientation = new Vector2(0, -1);
-                    }
-
-                    if (e.PressedKey == Keys.Left)
-                    {
-                        Object.Velocity = new Vector2(-1f, Object.Velocity.Y);
-                        Object.GetComponent<AnimationComponent>().setCurrentAnimation("WalkLeft");
-                        Object.Orientation = new Vector2(-1, 0);
-                    }
-
-                    if (e.PressedKey == Keys.Right)
-                    {
-                        Object.Velocity = new Vector2(1f, Object.Velocity.Y);
-                        Object.GetComponent<AnimationComponent>().setCurrentAnimation("WalkRight");
-                        Object.Orientation = new Vector2(1, 0);
-                    }
-                }));
-
-            test.AddComponent(new EventComponent(Event.Types.KEYBOARD_RELEASED, delegate(GameObject Object, Event GameEvent)
-            {
-                KeyReleasedEvent e = (KeyReleasedEvent)GameEvent;
-                if (e.ReleasedKey == Keys.Down || e.ReleasedKey == Keys.Up)
-                {
-                    Object.Velocity = new Vector2(Object.Velocity.X, 0);
-                }
-
-                if (e.ReleasedKey == Keys.Left || e.ReleasedKey == Keys.Right)
-                {
-                    Object.Velocity = new Vector2(0, Object.Velocity.Y);
-                }
-
-                if(Object.Velocity == Vector2.Zero)
-                {
-                    if (Object.Orientation.X == -1)
-                    {
-                        Object.GetComponent<AnimationComponent>().setCurrentAnimation("LookLeft");
-                    }
-                    else if (Object.Orientation.X == 1)
-                    {
-                        Object.GetComponent<AnimationComponent>().setCurrentAnimation("LookRight");
-                    }
-                    else if (Object.Orientation.Y == -1)
-                    {
-                        Object.GetComponent<AnimationComponent>().setCurrentAnimation("LookUp");
-                    }
-                    else if (Object.Orientation.Y == 1)
-                    {
-                        Object.GetComponent<AnimationComponent>().setCurrentAnimation("LookDown");
-                    }
-                }
-
-            }));
 
             Layer MainLayer = TestWorld.Layers.Find(l => l.Name == "main");
             MainLayer.Objects.Add(test);

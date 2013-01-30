@@ -47,6 +47,7 @@ namespace RpgGame
         {
             Components = new List<IGameObjectComponent>();
             Name = name;
+            Velocity = Vector2.Zero;
 
             if (AllObjects == null)
             {
@@ -79,7 +80,10 @@ namespace RpgGame
 
         public void Update(GameTime gameTime)
         {
-            //Alle Component werden geupdated.
+            //Update the position of the player.
+            Position += Velocity;
+
+            //All components are getting updated first.
             foreach (IGameObjectComponent c in Components)
             {
                 c.Position = Position;
@@ -89,15 +93,10 @@ namespace RpgGame
                     c.Update(gameTime);
                 }
             }
-
-            //Position += Velocity;
-            //Position_LastFrame = _Position;
         }
 
         public void AddComponent(IGameObjectComponent component)
         {
-            //AddComponent(component);
-
             Components.Add(component);
             component.Parent = this;
             component.Position = Position;

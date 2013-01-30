@@ -128,7 +128,6 @@
     <Compile Include="GameComponents\BaseGameComponent.cs" />
     <Compile Include="GameComponents\EventComponent.cs" />
     <Compile Include="World\GameWorld.cs" />
-    <Compile Include="GameComponents\MoveableComponent.cs" />
     <Compile Include="Processes\EventProcess.cs" />
     <Compile Include="GameStates\GameWorldState.cs" />
     <Compile Include="Processes\MoveProcess.cs" />

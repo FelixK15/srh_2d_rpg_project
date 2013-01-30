@@ -13,10 +13,12 @@ namespace RpgGame.GameComponents
     {
         private List<AbstractAnimation> AnimationList { get; set; }
         private AbstractAnimation CurrentAnimation { get; set; }
+        public Color DrawColor { get; set; }
 
         public AnimationComponent() : base("AnimationComponent")
         {
             AnimationList = new List<AbstractAnimation>();
+            DrawColor = Color.White;
         }
 
         public AnimationComponent(AbstractAnimation anim) : this()
@@ -40,6 +42,11 @@ namespace RpgGame.GameComponents
         public bool setCurrentAnimation(string animationName)
         {
             AbstractAnimation anim = AnimationList.Find(o => o.Name == animationName);
+            if (anim == CurrentAnimation)
+            {
+                return true;
+            }
+
             if (anim != null)
             {
                 CurrentAnimation = anim;
@@ -57,15 +64,15 @@ namespace RpgGame.GameComponents
         public override void Update(GameTime gameTime)
         {
             CurrentAnimation.Update(gameTime);
-//             Parent.Width = CurrentAnimation.CurrentFrame.texture.Width;
-//             Parent.Height = CurrentAnimation.CurrentFrame.texture.Height;
+            Parent.Width = CurrentAnimation.CurrentFrame.texture.Width;
+            Parent.Height = CurrentAnimation.CurrentFrame.texture.Height;
         }
 
         public override void Draw(ref SpriteBatch batch)
         {
             if (CurrentAnimation.CurrentFrame != null)
             {
-                batch.Draw(CurrentAnimation.CurrentFrame.texture, Position, Color.White);
+                batch.Draw(CurrentAnimation.CurrentFrame.texture, Position, DrawColor);
             }
         }
     }

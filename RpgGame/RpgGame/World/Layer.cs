@@ -39,8 +39,8 @@ namespace RpgGame.World
             foreach (GameObject go in Objects)
             {
                 CollisionComponent Component = go.GetComponent<CollisionComponent>();
-                float x = go.Position_NextFrame.X;
-                float y = go.Position_NextFrame.Y;
+                float x = go.Velocity.X;
+                float y = go.Velocity.Y;
                 if (Component != null)
                 {
                     foreach (GameObject t in Tiles)
@@ -52,7 +52,7 @@ namespace RpgGame.World
                             go.Position_NextFrame.X + Component.Offset.X < 0 ||
                             go.Position_NextFrame.X + Component.Offset.X + Component.Width > World.PixelHeight)
                         {
-                            x = go.Position.X;
+                            x = 0;
                         }
 
                         if (go.Position.X + Component.Offset.X + Component.Width > t.Position.X &&
@@ -62,12 +62,12 @@ namespace RpgGame.World
                             go.Position_NextFrame.Y + Component.Offset.Y < 0 ||
                             go.Position_NextFrame.Y + Component.Offset.Y + Component.Height > World.PixelHeight)
                         {
-                            y = go.Position.Y;
+                            y = 0;
                         }
                     }
                 }
 
-                go.Position = new Vector2(x, y);
+                go.Velocity = new Vector2(x, y);
 
                 foreach (GameObject go2 in Objects)
                 {
