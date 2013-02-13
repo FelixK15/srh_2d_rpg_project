@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="30" height="30" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="City_1" tilewidth="16" tileheight="16">
-  <image source="../../../../RpgGameContent/Tilesets/Tileset_1.png" trans="0084ff" width="480" height="256"/>
+  <image source="../../../../RpgGameContent/Tilesets/City_1.png" trans="0084ff" width="480" height="256"/>
  </tileset>
  <tileset firstgid="481" name="metatiles" tilewidth="16" tileheight="16">
   <image source="../../../../RpgGameContent/Tilesets/metatileset.png" trans="0084ff" width="128" height="32"/>
@@ -1819,7 +1819,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="main" width="30" height="30" visible="0">
+ <layer name="main" width="30" height="30">
   <properties>
    <property name="collision" value=""/>
   </properties>
@@ -2727,10 +2727,18 @@
   </data>
  </layer>
  <objectgroup name="main" width="30" height="30">
-  <object gid="107" x="144" y="272"/>
+  <object gid="107" x="288" y="208"/>
+  <object gid="107" x="144" y="256"/>
+  <object gid="107" x="240" y="304"/>
   <object x="304" y="208" width="32" height="32">
    <properties>
     <property name="script" value="Scripts\test.cs"/>
+   </properties>
+  </object>
+  <object name="npc" x="160" y="304" width="16" height="16">
+   <properties>
+    <property name="npc" value="NPC1"/>
+    <property name="script" value="Scripts\npc1.cs"/>
    </properties>
   </object>
  </objectgroup>

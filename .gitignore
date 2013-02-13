@@ -3,5 +3,8 @@ $ cat .gitignore
 .\RpgGame\RpgGame\bin\*
 .\RpgGame\RpgGame\obj\*
 
+.\RpgGame\RpgGameContent\bin\*
+.\RpgGame\RpgGameContent\obj\*
+
 *.csproj.user
 *.cachefile
