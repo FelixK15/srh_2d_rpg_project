@@ -14,18 +14,20 @@ namespace RpgGame.World
 {
     class Layer : IEventListener
     {
-        public string Name { get; set; }
-        public float FloatSpeed { get; set; }
-        public List<GameObject> Tiles { get; private set; }
+        public string           Name { get; set; }
+        public float            FloatSpeed { get; set; }
+        public Texture2D        LayerGraphic { get; set; }
+        public List<Rectangle>  Boundaries { get; set; }
         public List<GameObject> Objects { get; private set; }
-        public GameWorld World { get; private set; }
+        public GameWorld        World { get; private set; }
+        public int              Level { get; set; }
 
         public Layer(GameWorld world)
         {
             Name = "";
             FloatSpeed = 1.0f;
             Objects = new List<GameObject>();
-            Tiles = new List<GameObject>();
+            Boundaries = new List<Rectangle>();
             World = world;
 
             EventManager.AddListener(Event.Types.INTERACTION, this);
@@ -39,11 +41,6 @@ namespace RpgGame.World
         public void Update(GameTime time)
         {
             List<GameObject> alreadyChecked = new List<GameObject>();
-
-            foreach (GameObject tile in Tiles)
-            {
-                tile.Update(time);
-            }
 
             foreach (GameObject go1 in Objects)
             {
@@ -62,10 +59,7 @@ namespace RpgGame.World
 
         public void Draw(ref SpriteBatch batch)
         {
-            foreach (GameObject tile in Tiles)
-            {
-                tile.Draw(ref batch);
-            }
+            batch.Draw(LayerGraphic,Vector2.Zero,Color.White);
 
             Objects.Sort((go, go2) => (int)(go.Position.Y - go2.Position.Y));
 
@@ -97,10 +91,8 @@ namespace RpgGame.World
                 Rectangle goRect_NextFrame_Y = new Rectangle((int)(go.Position.X + collision.Offset.X),
                                                             (int)(go.Position_NextFrame.Y + collision.Offset.Y),
                                                             collision.Width,collision.Height);
-                foreach (GameObject tile in Tiles)
+                foreach (Rectangle tileRect in Boundaries)
                 {
-                    Rectangle tileRect = new Rectangle((int)tile.Position.X, (int)tile.Position.Y, tile.Width, tile.Height);
-
                     if (tileRect.Intersects(goRect_NextFrame_X))
                     {
                         x = 0;

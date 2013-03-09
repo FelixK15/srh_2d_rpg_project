@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpgGame", "RpgGame\RpgGame\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpgGameContent", "RpgGame\RpgGameContent\RpgGameContent.contentproj", "{D487BF63-9B0A-4BD8-954E-23C3B8DA1CBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameWorld Importer", "GameWorld Importer\GameWorld Importer.csproj", "{453F231D-2F9D-4DAF-8C58-E858A925F234}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animation Importer", "Animation Importer\Animation Importer.csproj", "{A20E0DB5-3DF3-4B0C-8CFC-A6FDE195AE6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -17,6 +21,14 @@ Global
 		{90F95498-18D8-41A4-B139-4CE7B0D21AE7}.Release|x86.Build.0 = Release|x86
 		{D487BF63-9B0A-4BD8-954E-23C3B8DA1CBD}.Debug|x86.ActiveCfg = Debug|x86
 		{D487BF63-9B0A-4BD8-954E-23C3B8DA1CBD}.Release|x86.ActiveCfg = Release|x86
+		{453F231D-2F9D-4DAF-8C58-E858A925F234}.Debug|x86.ActiveCfg = Debug|x86
+		{453F231D-2F9D-4DAF-8C58-E858A925F234}.Debug|x86.Build.0 = Debug|x86
+		{453F231D-2F9D-4DAF-8C58-E858A925F234}.Release|x86.ActiveCfg = Debug|x86
+		{453F231D-2F9D-4DAF-8C58-E858A925F234}.Release|x86.Build.0 = Debug|x86
+		{A20E0DB5-3DF3-4B0C-8CFC-A6FDE195AE6C}.Debug|x86.ActiveCfg = Debug|x86
+		{A20E0DB5-3DF3-4B0C-8CFC-A6FDE195AE6C}.Debug|x86.Build.0 = Debug|x86
+		{A20E0DB5-3DF3-4B0C-8CFC-A6FDE195AE6C}.Release|x86.ActiveCfg = Debug|x86
+		{A20E0DB5-3DF3-4B0C-8CFC-A6FDE195AE6C}.Release|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

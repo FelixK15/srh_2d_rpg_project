@@ -73,28 +73,41 @@ namespace RpgGame.Tools
                 {
                     X += (int)TargetPosition.X - _targetArea.X;
                 }
-                else if (TargetPosition.X >= _targetArea.X + _targetArea.Width)
+                else if (TargetPosition.X + Target.Width >= _targetArea.X + _targetArea.Width)
                 {
-                    X -= (_targetArea.X + _targetArea.Width) - (int)TargetPosition.X;
+                    X -= (_targetArea.X + _targetArea.Width) - (int)(TargetPosition.X + Target.Width);
                 }
 
                 if (TargetPosition.Y <= _targetArea.Y)
                 {
                     Y += (int)TargetPosition.Y - _targetArea.Y;
                 }
-                else if (TargetPosition.Y >= _targetArea.Y + _targetArea.Height)
+                else if (TargetPosition.Y + Target.Height >= _targetArea.Y + _targetArea.Height)
                 {
-                    Y -= (_targetArea.Y + _targetArea.Height) - (int)TargetPosition.Y;
+                    Y -= (_targetArea.Y + _targetArea.Height) - (int)(TargetPosition.Y + Target.Height);
                 }
 
-                if (X < 0)
-                {
+                if (X < 0){
                     X = 0;
+                }else{
+                    if(RpgGame.CurrentGameWorld != null){
+                        if(X + Width > RpgGame.CurrentGameWorld.PixelWidth){
+                            X = (RpgGame.CurrentGameWorld.PixelWidth - Width);
+                        }
+                    }
                 }
 
-                if (Y < 0)
-                {
+                
+                
+
+                if (Y < 0){
                     Y = 0;
+                }else{
+                    if(RpgGame.CurrentGameWorld != null){
+                        if(Y + Height > RpgGame.CurrentGameWorld.PixelHeight){
+                            Y = (RpgGame.CurrentGameWorld.PixelHeight - Height);
+                        }
+                    }
                 }
 
                 Position = new Vector2(X, Y);

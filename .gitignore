@@ -6,5 +6,8 @@ $ cat .gitignore
 .\RpgGame\RpgGameContent\bin\*
 .\RpgGame\RpgGameContent\obj\*
 
+.\Animation Importer\obj\*
+.\Animation Importerbin\*
+
 *.csproj.user
 *.cachefile
