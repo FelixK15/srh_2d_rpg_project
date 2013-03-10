@@ -133,6 +133,7 @@
     <Compile Include="GameComponents\AbstractAnimation.cs" />
     <Compile Include="GameComponents\BaseGameComponent.cs" />
     <Compile Include="GameComponents\EventComponent.cs" />
+    <Compile Include="Tools\DeveloperConsole.cs" />
     <Compile Include="Tools\GameWorldLoaderExtensions.cs" />
     <Compile Include="World\GameWorld.cs" />
     <Compile Include="Processes\EventProcess.cs" />
