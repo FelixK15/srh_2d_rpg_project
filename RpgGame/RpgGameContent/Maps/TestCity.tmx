@@ -41,6 +41,7 @@
   <object gid="107" x="240" y="304"/>
   <object x="304" y="208" width="32" height="32">
    <properties>
+    <property name="interaction" value=""/>
     <property name="script" value="Scripts\test.cs"/>
    </properties>
   </object>

@@ -25,13 +25,7 @@ namespace RpgGame.GameComponents
         public override void Init()
         {
             //Try to load script via script manager
-            Script              = ScriptManager.CompileScript(ScriptFile);
-            
-            //Set on changed handler
-            Script.OnChanged    += delegate(object newByteCode)
-            {
-                Script.ByteCode = newByteCode;
-            };
+            Script = ScriptManager.CompileScript(ScriptFile);
 
             //Call secretly wrote function
             CallFunction("SetParent", new object[] { Parent });

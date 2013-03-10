@@ -8,11 +8,7 @@ using System.Reflection;
 namespace RpgGame.Tools
 {
     class CompiledScript
-    {
-        public delegate void OnChangedHandler(object compilation);
-
-        public OnChangedHandler OnChanged               { get; set; }
-        
+    {        
         public string           FilePath                { get; set; }
         public string           ClassName               { get; set; }
         public string           SourceCode              { get; set; }
@@ -22,7 +18,6 @@ namespace RpgGame.Tools
 
         public CompiledScript()
         {
-            OnChanged            = null;
             ByteCode             = null;
             CompileErrors        = null;
             CompiledSuccessfully = false;
@@ -56,11 +51,17 @@ namespace RpgGame.Tools
         {
             if(ByteCode != null){
                 MethodInfo Info = ByteCode.GetType().GetMethod(FunctionName);
-                if (Info != null)
-                {
+                if (Info != null){
                     Info.Invoke(ByteCode, Parameter);
                 }
             }
+        }
+
+        public void Update(CompiledScript newScript)
+        {
+            //This function just updates the value from another script.
+            this.ByteCode   = newScript.ByteCode;
+            this.SourceCode = newScript.SourceCode;
         }
     }
 }

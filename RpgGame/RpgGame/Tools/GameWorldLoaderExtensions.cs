@@ -24,5 +24,10 @@ namespace RpgGame.Tools
         {
             Obj.AddComponent(new ScriptComponent(Value));
         }
+
+        public static void ObjectInteractionProperty(String Value,ref GameObject Obj)
+        {
+            Obj.AddComponent(new InteractionComponent());
+        }
     }
 }

@@ -53,7 +53,7 @@ namespace RpgGame.Tools
 
         public GameWorldLoader()
         {
-            _World       =     null;
+            _World      =     null;
             Tilesets    =  new List<Texture2D>();
             Tiles       =     new List<Texture2D>();
         }
@@ -313,12 +313,18 @@ namespace RpgGame.Tools
                 GameObject CurrentObj = new GameObject();
                 
                 //Set general object data
-                CurrentObj.Position = new Vector2(Obj.X, Obj.Y - _World.TileHeight);
+                float x = Obj.X;
+                float y = Obj.Y;
+
                 CurrentObj.Width    = Obj.Width;
                 CurrentObj.Height   = Obj.Height;
 
                 //Check if the object is associated to a tile graphic
                 if(Obj.GID != -1){
+                    //If the object has a tile graphic, we need to substract 1 tileheight from the y position
+                    //due to a bug in the map editor
+                    y -= _World.TileHeight;
+                    
                     Texture2D TileGraphic = Tiles.ElementAt<Texture2D>(Obj.GID - 1);
                     Texture2D NewTexture = new Texture2D(TileGraphic.GraphicsDevice,TileGraphic.Width,TileGraphic.Height);
                     Color[] TileGraphicPixels = new Color[TileGraphic.Width * TileGraphic.Height];
@@ -327,6 +333,10 @@ namespace RpgGame.Tools
                     CurrentObj.AddComponent(new RenderableComponent(NewTexture));
                 }
 
+                //Set the final position of the object.
+                CurrentObj.Position = new Vector2(x,y);
+
+                //Go to each property of the object.
                 foreach(XMLProperty Property in Obj.Properties){
                     ObjectDelegate Function = null;
                     if(ObjectPropertyFunctions.TryGetValue(Property.Name,out Function)){

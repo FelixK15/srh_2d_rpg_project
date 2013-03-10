@@ -13,10 +13,29 @@ namespace RpgGame.Manager
 {
     class ScriptManager
     {
-        private static CSharpCodeProvider CodeProvider { get; set; }
-        private static CompilerParameters CompileParameters { get; set; }
-        private static Dictionary<String, CompiledScript> CompiledScripts { get; set; }
-        private static Dictionary<String, FileSystemWatcher> ScriptWatcher { get; set; }
+        private static CSharpCodeProvider                       CodeProvider      { get; set; }
+        private static CompilerParameters                       CompileParameters { get; set; }
+        private static Dictionary<String, CompiledScript>       CompiledScripts   { get; set; }
+        private static Dictionary<String, FileSystemWatcher>    ScriptWatcher     { get; set; }
+
+        public static void FileChangedHandler(object sender,FileSystemEventArgs e)
+        {
+            //Get the class name of the script that changed (class name = script filename without extensions)
+            String ClassName = Path.GetFileNameWithoutExtension(e.FullPath);
+
+            //Compile the new script
+            CompiledScript UpdatedScript = _Compile(e.FullPath);
+
+            //Check if the new script has been compiled successfully
+            if(UpdatedScript.CompiledSuccessfully){
+                //Get the script we saved previously during first compilation
+                CompiledScript SavedScript = null;
+                CompiledScripts.TryGetValue(ClassName,out SavedScript);
+
+                //Update the values from the SavedScript with the values of the updated script
+                SavedScript.Update(UpdatedScript);
+            }
+        }
 
         public static void Initialize()
         {
@@ -61,25 +80,27 @@ namespace RpgGame.Manager
                 Watcher.NotifyFilter = NotifyFilters.LastWrite;
 
                 //Set changed handler that recompiles the script.
-                Watcher.Changed += delegate(object sender, FileSystemEventArgs e)
-                {
-                    String ScriptClassName = Path.GetFileNameWithoutExtension(e.FullPath);
+                Watcher.Changed += FileChangedHandler;
 
-                    CompiledScript OldScript;
-                    CompiledScripts.TryGetValue(ScriptClassName, out OldScript);
-
-                    CompiledScript NewScript = _Compile(e.FullPath);
-                    if (OldScript != null && OldScript.OnChanged != null)
-                    {
-                        OldScript.OnChanged(NewScript.ByteCode);
-                    }
-                };
                 Watcher.EnableRaisingEvents = true;
                 ScriptWatcher.Add(ScriptPath, Watcher);
             }
 
-            //Try to compile script.
-            return _Compile(ScriptFile);
+            //Compile Script
+            CompiledScript Script = _Compile(ScriptFile);
+            
+            //If the script has been compiled successfully, add it to a list of compiled scripts.
+            if(Script.CompiledSuccessfully){
+                //Check if the script has been added previously
+                if(CompiledScripts.ContainsKey(Script.ClassName)){
+                    //remove old script from the list
+                    CompiledScripts.Remove(Script.ClassName);
+                }
+                //add script to the list.
+                CompiledScripts.Add(Script.ClassName,Script);
+            }
+
+            return Script;
         }
 
         private static String _WriteSecretFunctions(string sourceCode)
@@ -141,15 +162,15 @@ namespace RpgGame.Manager
 
             //Try to load the class from the compiled script (class = filename without extension)
             try{
-                Script.ByteCode = Results.CompiledAssembly.CreateInstance(Script.ClassName);
+                Script.ByteCode             = Results.CompiledAssembly.CreateInstance(Script.ClassName);
+                Script.CompiledSuccessfully = true;
             }catch(Exception ex){
-                //If the class could not be found, mark the compilation as unsuccessful and set the stacktrace
+                //If the class could not be found, mark the compilation as unsuccessful and set the stack trace
                 //as compile error.
                 Script.CompiledSuccessfully = false;
                 Script.CompileErrors        = new string[] {ex.StackTrace};
             }
-            
-            
+        
             return Script;
         }
     }

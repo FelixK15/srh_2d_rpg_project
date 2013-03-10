@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\InteractionEvent.cs" />
+    <Compile Include="GameComponents\InteractionComponent.cs" />
     <Compile Include="Tools\Camera.cs" />
     <Compile Include="Tools\CollisionChecker.cs" />
     <Compile Include="Events\Event.cs" />
@@ -166,9 +167,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game\RpgGame.cs" />
-    <None Include="Scripts\test.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Compile Include="Tools\Texture2DCropper.cs" />
   </ItemGroup>
   <ItemGroup>

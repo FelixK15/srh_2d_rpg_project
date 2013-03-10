@@ -170,7 +170,7 @@ namespace RpgGame
 
             // test.AddComponent(new ScriptComponent("test.lua"));
             test.AddComponent(new PlayerComponent(PlayerIndex.One));
-            test.AddComponent(new CollisionComponent(CollisionComponent.CollisionType.DYNAMIC, new Vector2(0, 20), 16, 16, null));
+            test.AddComponent(new CollisionComponent(CollisionComponent.CollisionType.DYNAMIC, new Vector2(0, 20), 10, 5, null));
             test.AddComponent(new AnimationComponent());
 
             test.GetComponent<AnimationComponent>().addAnimation(new SpritesheetAnimation("WalkDown", "Characters//Hero//walk_down",
@@ -202,6 +202,7 @@ namespace RpgGame
         {
             GameWorldLoader.Initialize();
 
+            GameWorldLoader.ObjectPropertyFunctions.Add("interaction",GameWorldLoaderExtensions.ObjectInteractionProperty);
             GameWorldLoader.ObjectPropertyFunctions.Add("script",GameWorldLoaderExtensions.ObjectScriptProperty);
             GameWorldLoader.TilePropertyFunctions.Add("invisible",GameWorldLoaderExtensions.TileInvisibleProperty);
         }

@@ -13,12 +13,12 @@ namespace RpgGame.GameComponents
 {
     class PlayerComponent : BaseGameComponent
     {
-        private PlayerIndex Player { get; set; }
-        private int ActionCounter { get; set; }
-        private int ColorCounter { get; set; }
-        private int InteractionCooldown { get; set; }
+        private PlayerIndex Player          { get; set; }
+        private int ActionCounter           { get; set; }
+        private int ColorCounter            { get; set; }
+        private int InteractionCooldown     { get; set; }
 
-        private Rectangle InteractionRect { get; set; }
+        private Rectangle InteractionRect   { get; set; }
 
         public PlayerComponent(PlayerIndex player)
             : base("PlayerComponent")
@@ -29,6 +29,7 @@ namespace RpgGame.GameComponents
 
         public override void Update(GameTime gameTime)
         {
+            InteractionRect = _CreateInteractionRect();
             Parent.Velocity = Vector2.Zero;
             AnimationComponent animComponent = Parent.GetComponent<AnimationComponent>();
             CollisionComponent collComponent = Parent.GetComponent<CollisionComponent>();
@@ -117,7 +118,7 @@ namespace RpgGame.GameComponents
                 Color[] data = new Color[test.Width * test.Height];
                 for (int i = 0; i < data.Length; ++i)
                 {
-                    data[i] = new Color(0.5f, 0.5f, 0.5f, 1f);
+                    data[i] = new Color(0.5f, 1.0f, 0.5f, 1f);
                 }
                 test.SetData<Color>(data);
                 batch.Draw(test, InteractionRect, Color.White);
@@ -144,6 +145,14 @@ namespace RpgGame.GameComponents
             int x = (int)(component.Position.X + component.Offset.X) + (int)(Parent.Orientation.X * width);
             int y = (int)(component.Position.Y + component.Offset.Y) + (int)(Parent.Orientation.Y * height);
 
+            //If the player is facing down or right, we have to add the
+            //dimension of the collisioncomponent as well
+            if(Parent.Orientation.X > 0){
+                x += component.Width;
+            }else if (Parent.Orientation.Y > 0){
+                y += component.Height;
+            }
+            
             return new Rectangle(x, y, width, height);
         }
     }
