@@ -36,6 +36,17 @@ namespace RpgGame.Tools
             ByteCode = bytecode;
         }
 
+        public bool HasFunction(String FunctionName)
+        {
+            bool ReturnValue = false;
+            if(ByteCode != null){
+                MethodInfo Info = ByteCode.GetType().GetMethod(FunctionName);
+                ReturnValue = Info != null;
+            }
+
+            return ReturnValue;
+        }
+
         public void CallFunction(String FunctionName)
         {
             CallFunction(FunctionName, null);

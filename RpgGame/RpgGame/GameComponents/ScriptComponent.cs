@@ -50,6 +50,15 @@ namespace RpgGame.GameComponents
             CallFunction("Draw",null);
         }
 
+        public bool HasFunction(String FunctionName)
+        {
+            if(Script == null){
+                return false;
+            }
+
+            return Script.HasFunction(FunctionName);
+        }
+
         public void CallFunction(String FunctionName)
         {
             CallFunction(FunctionName,null);

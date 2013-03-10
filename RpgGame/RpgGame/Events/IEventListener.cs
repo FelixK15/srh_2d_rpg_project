@@ -7,6 +7,6 @@ namespace RpgGame.Events
 {
     interface IEventListener
     {
-        void HandleEvent(Event eGameEvent);
+        void HandleEvent(Event GameEvent);
     }
 }

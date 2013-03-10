@@ -12,30 +12,23 @@ using RpgGame.Events;
 
 namespace RpgGame.World
 {
-    class Layer : IEventListener
+    class Layer
     {
-        public string           Name { get; set; }
-        public float            FloatSpeed { get; set; }
-        public Texture2D        LayerGraphic { get; set; }
-        public List<Rectangle>  Boundaries { get; set; }
-        public List<GameObject> Objects { get; private set; }
-        public GameWorld        World { get; private set; }
-        public int              Level { get; set; }
+        public string           Name            { get; set; }
+        public float            FloatSpeed      { get; set; }
+        public Texture2D        LayerGraphic    { get; set; }
+        public List<Rectangle>  Boundaries      { get; set; }
+        public List<GameObject> Objects         { get; private set; }
+        public GameWorld        World           { get; private set; }
+        public int              Level           { get; set; }
 
         public Layer(GameWorld world)
         {
-            Name = "";
-            FloatSpeed = 1.0f;
-            Objects = new List<GameObject>();
-            Boundaries = new List<Rectangle>();
-            World = world;
-
-            EventManager.AddListener(Event.Types.INTERACTION, this);
-        }
-
-        ~Layer()
-        {
-            EventManager.RemoveListener(Event.Types.INTERACTION, this);
+            Name        = "";
+            FloatSpeed  = 1.0f;
+            Objects     = new List<GameObject>();
+            Boundaries  = new List<Rectangle>();
+            World       = world;    
         }
 
         public void Update(GameTime time)
@@ -66,14 +59,6 @@ namespace RpgGame.World
             foreach (GameObject go in Objects)
             {
                 go.Draw(ref batch);
-            }
-        }
-
-        public void HandleEvent(Event eGameEvent)
-        {
-            if (eGameEvent is InteractionEvent)
-            {
-                _HandleInteraction((InteractionEvent)eGameEvent);
             }
         }
 
