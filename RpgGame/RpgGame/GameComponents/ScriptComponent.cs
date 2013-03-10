@@ -13,34 +13,31 @@ namespace RpgGame.GameComponents
 {
     class ScriptComponent : BaseGameComponent
     {
-        public string ScriptFile { get; private set; }
+        public  string          ScriptFile  { get; private set; }
+        private CompiledScript  Script      { get; set; }
 
-        private CompiledScript Script { get; set; }
-        private bool Compiled { get; set; }
 
         public ScriptComponent(string scriptfile) : base("ScriptComponent")
         {
             ScriptFile = scriptfile;
-            Compiled = false;
         }
 
         public override void Init()
         {
-            try
+            //Try to load script via script manager
+            Script              = ScriptManager.CompileScript(ScriptFile);
+            
+            //Set on changed handler
+            Script.OnChanged    += delegate(object newByteCode)
             {
-                Script = ScriptManager.CompileScript(ScriptFile);
-                Script.OnChanged += delegate(object compilation)
-                {
-                    Script.Compilation = compilation;
-                };
-                Compiled = true;
-                CallFunction("SetParent", new object[] { Parent });
-                CallFunction("Init");
-            }
-            catch (System.Exception ex)
-            {
-                //console
-            }
+                Script.ByteCode = newByteCode;
+            };
+
+            //Call secretly wrote function
+            CallFunction("SetParent", new object[] { Parent });
+            
+            //Call init method.
+            CallFunction("Init");
         }
 
         public override void Update(GameTime gameTime)
@@ -60,8 +57,9 @@ namespace RpgGame.GameComponents
 
         public void CallFunction(String FunctionName, object[] Parameter)
         {
-            if (Compiled && Active)
-            {
+            //Only call a function in the script if the script has been compiled successfully and if the
+            //component is active.
+            if (Active && Script != null && Script.CompiledSuccessfully){
                 Script.CallFunction(FunctionName, Parameter);
             }
         }

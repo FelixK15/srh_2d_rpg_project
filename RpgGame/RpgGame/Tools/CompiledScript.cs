@@ -11,13 +11,29 @@ namespace RpgGame.Tools
     {
         public delegate void OnChangedHandler(object compilation);
 
-        public OnChangedHandler OnChanged { get; set; }
-        public object Compilation { get; set; }
+        public OnChangedHandler OnChanged               { get; set; }
+        
+        public string           FilePath                { get; set; }
+        public string           ClassName               { get; set; }
+        public string           SourceCode              { get; set; }
+        public object           ByteCode                { get; set; }
+        public bool             CompiledSuccessfully    { get; set; }
+        public string[]         CompileErrors           { get; set; }
 
-        public CompiledScript(object compilation)
+        public CompiledScript()
         {
-            OnChanged = null;
-            Compilation = compilation;
+            OnChanged            = null;
+            ByteCode             = null;
+            CompileErrors        = null;
+            CompiledSuccessfully = false;
+            SourceCode           = "";
+            FilePath             = "";
+            ClassName            = "";
+        }
+
+        public CompiledScript(object bytecode) : this()
+        {
+            ByteCode = bytecode;
         }
 
         public void CallFunction(String FunctionName)
@@ -27,10 +43,12 @@ namespace RpgGame.Tools
 
         public void CallFunction(String FunctionName, object[] Parameter)
         {
-            MethodInfo Info = Compilation.GetType().GetMethod(FunctionName);
-            if (Info != null)
-            {
-                Info.Invoke(Compilation, Parameter);
+            if(ByteCode != null){
+                MethodInfo Info = ByteCode.GetType().GetMethod(FunctionName);
+                if (Info != null)
+                {
+                    Info.Invoke(ByteCode, Parameter);
+                }
             }
         }
     }
