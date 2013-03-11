@@ -23,6 +23,8 @@ namespace RpgGame.Manager
             //Get the class name of the script that changed (class name = script filename without extensions)
             String ClassName = Path.GetFileNameWithoutExtension(e.FullPath);
 
+            DeveloperConsole.AddMessage(DeveloperConsole.MessageType.TRACE,"Update of script '" + Path.GetFileName(e.FullPath) + "' detected.");
+
             //Compile the new script
             CompiledScript UpdatedScript = _Compile(e.FullPath);
 
@@ -129,8 +131,12 @@ namespace RpgGame.Manager
                 Script.CompiledSuccessfully = false;
                 Script.CompileErrors        = new string[] {"Scriptfile '" + Script.FilePath + "' not found."};
 
+                DeveloperConsole.AddMessage(DeveloperConsole.MessageType.ERROR,String.Concat(Script.CompileErrors));
+
                 return Script;
             }
+
+            DeveloperConsole.AddMessage(DeveloperConsole.MessageType.TRACE,"Starting to compile '" + Script.FilePath + "'...");
 
             //Compile the script.
             CompilerResults Results = CodeProvider.CompileAssemblyFromSource(CompileParameters, new String[] { Script.SourceCode });
@@ -144,7 +150,7 @@ namespace RpgGame.Manager
                 {
                     //Only check for errors, not warnings
                     if(!Error.IsWarning){
-                        ErrorString = String.Format("Error {0}\nFile: {1} Line: {2}\nDescription:{3}\n",
+                        ErrorString = String.Format("Error {0}\nFile: {1} Line: {2}\nDescription:{3}\n\n",
                                                      Error.ErrorNumber,Script.FilePath,Error.Line,Error.ErrorText);
 
                         Errors.Add(ErrorString);
@@ -155,6 +161,8 @@ namespace RpgGame.Manager
                 if(Errors.Count > 0){
                     Script.CompiledSuccessfully = false;
                     Script.CompileErrors        = Errors.ToArray();
+
+                    DeveloperConsole.AddMessage(DeveloperConsole.MessageType.ERROR,String.Concat(Script.CompileErrors));
 
                     return Script;
                 }
@@ -169,8 +177,14 @@ namespace RpgGame.Manager
                 //as compile error.
                 Script.CompiledSuccessfully = false;
                 Script.CompileErrors        = new string[] {ex.StackTrace};
+
+                DeveloperConsole.AddMessage(DeveloperConsole.MessageType.ERROR,String.Concat(Script.CompileErrors));
             }
         
+            if(Script.CompiledSuccessfully){
+                DeveloperConsole.AddMessage(DeveloperConsole.MessageType.TRACE,"Script '" + Script.FilePath + "' compiled successfully.");
+            }
+
             return Script;
         }
     }

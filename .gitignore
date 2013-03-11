@@ -9,5 +9,8 @@ $ cat .gitignore
 .\Animation Importer\obj\*
 .\Animation Importerbin\*
 
+.\ConsoleContext\obj\*
+.\ConsoleContext\bin\*
+
 *.csproj.user
 *.cachefile

@@ -13,10 +13,10 @@ namespace RpgGame.GameComponents
 {
     class PlayerComponent : BaseGameComponent
     {
-        private PlayerIndex Player          { get; set; }
-        private int ActionCounter           { get; set; }
-        private int ColorCounter            { get; set; }
-        private int InteractionCooldown     { get; set; }
+        private PlayerIndex Player              { get; set; }
+        private int         ActionCounter       { get; set; }
+        private int         ColorCounter        { get; set; }
+        private int         InteractionCooldown { get; set; }
 
         private Rectangle InteractionRect   { get; set; }
 

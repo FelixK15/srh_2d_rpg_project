@@ -61,6 +61,9 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ConsoleContext">
+      <HintPath>..\..\ConsoleContext\bin\Debug\ConsoleContext.dll</HintPath>
+    </Reference>
     <Reference Include="GameWorld Importer">
       <HintPath>..\..\GameWorld Importer\bin\x86\Debug\GameWorld Importer.dll</HintPath>
     </Reference>
@@ -114,6 +117,8 @@
   <ItemGroup>
     <Compile Include="Events\InteractionEvent.cs" />
     <Compile Include="GameComponents\InteractionComponent.cs" />
+    <Compile Include="Manager\GameStateMachine.cs" />
+    <Compile Include="Tools\BufferedInput.cs" />
     <Compile Include="Tools\Camera.cs" />
     <Compile Include="Tools\CollisionChecker.cs" />
     <Compile Include="Events\Event.cs" />
@@ -135,6 +140,7 @@
     <Compile Include="GameComponents\EventComponent.cs" />
     <Compile Include="Tools\DeveloperConsole.cs" />
     <Compile Include="Tools\GameWorldLoaderExtensions.cs" />
+    <Compile Include="Tools\Texture2DFiller.cs" />
     <Compile Include="World\GameWorld.cs" />
     <Compile Include="Processes\EventProcess.cs" />
     <Compile Include="GameStates\GameWorldState.cs" />

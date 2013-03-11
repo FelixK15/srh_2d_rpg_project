@@ -53,9 +53,9 @@ namespace RpgGame.Tools
 
         public GameWorldLoader()
         {
-            _World      =     null;
+            _World      =  null;
             Tilesets    =  new List<Texture2D>();
-            Tiles       =     new List<Texture2D>();
+            Tiles       =  new List<Texture2D>();
         }
 
         public GameWorldLoader(string filename) : this()
@@ -101,8 +101,6 @@ namespace RpgGame.Tools
                 _CreateObjects(Objects);
             }
 
-
-           // _World.Layers.Reverse();
             World = _World;
 
             //Release all tiles
@@ -189,8 +187,6 @@ namespace RpgGame.Tools
                     }
                 }
             }          
- 
-            TilesetGraphic.Dispose();
         }
 
         private void _CreateLayer(XMLLayer InputLayer)
@@ -204,7 +200,7 @@ namespace RpgGame.Tools
             NewLayer.Name = InputLayer.Name;
 
             RenderTarget2D LayerGraphic = new RenderTarget2D(GraphicSettings.GraphicDevice,
-                                            InputLayer.Width * _World.TileWidth, InputLayer.Height * _World.TileHeight);
+                                          InputLayer.Width * _World.TileWidth, InputLayer.Height * _World.TileHeight);
 
             GraphicSettings.GraphicDevice.SetRenderTarget(LayerGraphic);
             GraphicSettings.GraphicDevice.Clear(Color.Transparent);
@@ -226,7 +222,6 @@ namespace RpgGame.Tools
 
             //We need to decompress the data using the deflate stream
             GZipStream EncoderStream = new GZipStream(Stream,CompressionMode.Decompress);
-            //StreamReader Reader = new StreamReader(EncoderStream);
 
             //Begin to draw to the layer graphic
             Batch.Begin();
@@ -255,6 +250,7 @@ namespace RpgGame.Tools
                         PosY += _World.TileHeight;
                     }
                 }catch(EndOfStreamException ex){
+                    Reader.Close();
                     break;
                 } 
             }
@@ -290,6 +286,12 @@ namespace RpgGame.Tools
 
             //Add the layer to the world
             _World.Layers.Add(NewLayer);
+            NewLayer.LayerGraphic.Disposing += LayerGraphic_Disposing;
+        }
+
+        void LayerGraphic_Disposing(object sender, EventArgs e)
+        {
+            Console.WriteLine("Weg ist es.");
         }
 
         private void _CreateObjects(XMLObjectGroup Objects)
@@ -336,7 +338,7 @@ namespace RpgGame.Tools
                 //Set the final position of the object.
                 CurrentObj.Position = new Vector2(x,y);
 
-                //Go to each property of the object.
+                //Go through each property of the object.
                 foreach(XMLProperty Property in Obj.Properties){
                     ObjectDelegate Function = null;
                     if(ObjectPropertyFunctions.TryGetValue(Property.Name,out Function)){
