@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpgGame", "RpgGame\RpgGame\RpgGame.csproj", "{90F95498-18D8-41A4-B139-4CE7B0D21AE7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{453F231D-2F9D-4DAF-8C58-E858A925F234} = {453F231D-2F9D-4DAF-8C58-E858A925F234}
+		{A20E0DB5-3DF3-4B0C-8CFC-A6FDE195AE6C} = {A20E0DB5-3DF3-4B0C-8CFC-A6FDE195AE6C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpgGameContent", "RpgGame\RpgGameContent\RpgGameContent.contentproj", "{D487BF63-9B0A-4BD8-954E-23C3B8DA1CBD}"
 EndProject

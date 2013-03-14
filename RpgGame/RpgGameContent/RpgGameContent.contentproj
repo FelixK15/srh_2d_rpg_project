@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Fonts\" />
     <Folder Include="Fonts\Bitmap\" />
     <Folder Include="Music\" />
     <Folder Include="Sounds\" />
@@ -251,20 +252,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maps\TestMapByte64.tmx">
+      <Name>TestMapByte64</Name>
+      <Importer>MapImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Maps\TestCity.tmx">
       <Name>TestCity</Name>
-      <Importer>MapImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Maps\test.tmx">
-      <Name>test</Name>
-      <Importer>MapImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Maps\unbenannt.tmx">
-      <Name>unbenannt</Name>
       <Importer>MapImporter</Importer>
     </Compile>
   </ItemGroup>
