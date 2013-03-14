@@ -35,13 +35,13 @@ namespace RpgGame.Tools
             }
         }
 
-        private static bool                 DrawFlashingLine    { get; set; }
+        private static bool                 DrawFlashingLine    { get; set; }   //Boolean that determines if the flashing line should be drawn
         private static int                  FrameCounter        { get; set; }   //Frame counter for drawing the flashing line at the input
         private static SpriteFont           Font                { get; set; }   //Font to use for drawing text
         private static String               Input               { get; set; }   //String representing the input of a user
         private static List<ConsoleMessage> Messages            { get; set; }   //All messages
 
-        private static Texture2D FlashingLine;
+        private static Texture2D FlashingLine;      //Graphic for the flashing line
         private static Texture2D Background;        //Background of the console
         private static Texture2D InputBox;          //Inputbox for input
         private static Assembly  ContextAssembly;   //The assembly of the consolecontext.dll
@@ -70,9 +70,9 @@ namespace RpgGame.Tools
             BufferedInput.CharEnterCallbacks.Add(OnCharEnter);
 
             try{
-                String ContextPath = Path.GetFullPath("ConsoleContext.dll");
-                ContextAssembly = Assembly.LoadFile(ContextPath);
-                ContextInstance = ContextAssembly.CreateInstance("ConsoleContext.Context");
+                String ContextPath  = Path.GetFullPath("ConsoleContext.dll");
+                ContextAssembly     = Assembly.LoadFile(ContextPath);
+                ContextInstance     = ContextAssembly.CreateInstance("ConsoleContext.Context");
             }catch(Exception ex){
                 AddMessage(MessageType.ERROR,ex.Message);
                 AddMessage(MessageType.ERROR,"Could not load 'ConsoleContext.dll'");
@@ -123,6 +123,7 @@ namespace RpgGame.Tools
             Batch.Draw(InputBox,new Vector2(0,GraphicSettings.ClientHeight*0.5f),Color.White);
             Batch.DrawString(Font,Input,new Vector2(0,GraphicSettings.ClientHeight*0.5f),Color.Black);
         
+            //Every 60 frames we draw the flashing line for 60 frames
             if(FrameCounter % 60 == 0){
                 DrawFlashingLine = !DrawFlashingLine;
             }
@@ -167,7 +168,7 @@ namespace RpgGame.Tools
             List<String> Parameters = new List<String>();
             String ProcessedInput   = "";
             bool FoundWhiteSpace    = false;
-            bool FoundComma        = false;
+            bool FoundComma         = false;
 
             //Remove multiple white spaces and commas
             for(int i = 0;i < Input.Length;++i){
@@ -189,7 +190,7 @@ namespace RpgGame.Tools
                     ProcessedInput += Input[i];
                 }
             }
-
+            
             //Get Function Name
             int EndFunction = ProcessedInput.IndexOf(' ');
             if(EndFunction == -1){
