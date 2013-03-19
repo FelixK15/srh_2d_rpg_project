@@ -118,11 +118,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\PlayerAttackEvent.cs" />
     <Compile Include="Events\InteractionEvent.cs" />
     <Compile Include="GameComponents\EnemyComponent.cs" />
     <Compile Include="GameComponents\InteractionComponent.cs" />
+    <Compile Include="GameComponents\Weapon.cs" />
     <Compile Include="GameComponents\WeaponComponent.cs" />
+    <None Include="GameScripts\Characters\Default.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameScripts\Enemies\Default.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameScripts\Weapons\Default.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Compile Include="Manager\GameStateMachine.cs" />
+    <Compile Include="Processes\PlayerAttackProcess.cs" />
     <Compile Include="Tools\BufferedInput.cs" />
     <Compile Include="Tools\Camera.cs" />
     <Compile Include="Tools\CollisionChecker.cs" />
@@ -219,6 +231,7 @@
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

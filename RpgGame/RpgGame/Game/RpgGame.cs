@@ -147,6 +147,11 @@ namespace RpgGame
 
             GraphicSettings.Camera.Target = test;
 
+//             Weapon weapon = new Weapon();
+//             weapon.Name = "Sword";
+//             weapon.WeaponLevel = 1;
+//             weapon.
+
             test.AddComponent(new PlayerComponent(PlayerIndex.One));
             test.AddComponent(new CollisionComponent(CollisionComponent.CollisionType.DYNAMIC, new Vector2(0, 16), 22, 16, null));
             test.AddComponent(new AnimationComponent());

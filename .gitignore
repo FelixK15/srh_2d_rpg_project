@@ -11,3 +11,14 @@ $ cat .gitignore
 
 *.csproj.user
 *.cachefile
+obj
+bin
+/RpgGame/RpgGameContent/RpgGameContent.contentproj.orig
+/RpgGame/RpgGameContent/RpgGameContent.contentproj.user
+
+/RpgGame.v11.suo
+
+/RpgGame/RpgGameContent/Maps/TestMapByte64.tmx
+/RpgGame/RpgGameContent/Maps/test.tmx
+/RpgGame/RpgGameContent/Maps/unbenannt.tmx
+/RpgGame/RpgGameContent/Weapons/Sword.xml

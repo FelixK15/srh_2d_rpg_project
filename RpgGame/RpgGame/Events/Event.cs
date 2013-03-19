@@ -28,7 +28,7 @@ namespace RpgGame.Events
             PLAYER_MOVED,
 
             ON_INTERACTION,
-            ON_ATTACK
+            ON_PLAYER_ATTACK
         }
 
         private Types m_tEventType;

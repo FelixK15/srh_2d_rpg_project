@@ -86,6 +86,24 @@ namespace RpgGame.GameComponents
             return false;
         }
 
+        public bool RemoveAnimation(string animationName)
+        {
+            AbstractAnimation anim = AnimationList.Find(o => o.Name == animationName);
+            if(anim == null){
+                DeveloperConsole.AddMessage(DeveloperConsole.MessageType.ERROR,String.Format("Could not remove animation with the name '{0}'\nbecause there's no animation with such name.",animationName));
+                return false;
+            }else{
+                AnimationList.Remove(anim);
+            }
+
+            return true;
+        }
+
+        public bool HasAnimation(string animationName)
+        {
+            return AnimationList.Find(a => a.Name == animationName) != null;
+        }
+
         public AbstractAnimation GetCurrentAnimation()
         {
             return CurrentAnimation;

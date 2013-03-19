@@ -14,19 +14,21 @@ namespace RpgGame.GameComponents
     class PlayerComponent : BaseGameComponent
     {
         private PlayerIndex Player              { get; set; }
-        private int         ActionCounter       { get; set; }
+        private int         AttackCounter       { get; set; }
         private int         ColorCounter        { get; set; }
         private int         IgnoreInputSpan     { get; set; }
         private bool        InteractionSwitch   { get; set; }
         private bool        AttackSwitch        { get; set; }
         private Rectangle   InteractionRect     { get; set; }
 
+        public  int         Experience          { get; set; }
+
         public PlayerComponent(PlayerIndex player)
             : base("PlayerComponent")
         {
             IgnoreInputSpan = 0;
             Player          = player;
-            ActionCounter   = 100;
+            AttackCounter   = 100;
             AttackSwitch    = true;
         }
 
@@ -37,6 +39,7 @@ namespace RpgGame.GameComponents
 
             AnimationComponent animComponent = Parent.GetComponent<AnimationComponent>();
             CollisionComponent collComponent = Parent.GetComponent<CollisionComponent>();
+            WeaponComponent    weapComponent = Parent.GetComponent<WeaponComponent>();
             
             //Check if we currently accepting input.
             if(IgnoreInputSpan > 0){
@@ -49,7 +52,16 @@ namespace RpgGame.GameComponents
                 //if attack switch is true, then the user holds the attack button after having attacked
                 //normally. We start to charge the attack meter if the weapon has been leveled up so far.
                 if (AttackSwitch){
-
+                    if(weapComponent != null){
+                        if(weapComponent.CurrentWeapon != null){
+                            int maxAttackCounterMultiplier = (int)(weapComponent.CurrentWeapon.Kills * 0.01);
+                            maxAttackCounterMultiplier = maxAttackCounterMultiplier > 3 ? 3 : maxAttackCounterMultiplier;
+                            int maxAttackCounter = 100 * ( maxAttackCounterMultiplier == 0 ? 1 : maxAttackCounterMultiplier );
+                            if(AttackCounter < maxAttackCounter){
+                                ++AttackCounter;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -94,6 +106,7 @@ namespace RpgGame.GameComponents
                 }
                 test.SetData<Color>(data);
                 batch.Draw(test, InteractionRect, Color.White);
+                test.Dispose();
             }
         }
 
@@ -131,6 +144,12 @@ namespace RpgGame.GameComponents
         public void Attack()
         {
             AnimationComponent AnimComponent = Parent.GetComponent<AnimationComponent>();
+            WeaponComponent    WeapComponent = Parent.GetComponent<WeaponComponent>();
+
+            //Set the associated weapon animations
+            if(WeapComponent != null){
+                WeapComponent.StartAttack(AttackCounter / 100);
+            }
 
             //Check the orientation of the player and play the associated animation.
             if (AnimComponent != null){
