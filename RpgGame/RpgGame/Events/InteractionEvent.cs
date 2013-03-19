@@ -13,7 +13,7 @@ namespace RpgGame.Events
         public GameObject Source { get; private set; }
 
         public InteractionEvent(Rectangle area,GameObject source)
-            : base(Event.Types.INTERACTION)
+            : base(Event.Types.ON_INTERACTION)
         {
             InteractionArea = area;
             Source = source;

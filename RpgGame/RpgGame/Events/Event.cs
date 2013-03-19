@@ -26,7 +26,9 @@ namespace RpgGame.Events
             RINGMENU_ZOOM_IN,
 
             PLAYER_MOVED,
-            INTERACTION
+
+            ON_INTERACTION,
+            ON_ATTACK
         }
 
         private Types m_tEventType;

@@ -61,6 +61,9 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Animation Importer">
+      <HintPath>..\..\Animation Importer\bin\x86\Debug\Animation Importer.dll</HintPath>
+    </Reference>
     <Reference Include="ConsoleContext">
       <HintPath>..\..\ConsoleContext\bin\Debug\ConsoleContext.dll</HintPath>
     </Reference>
@@ -116,7 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\InteractionEvent.cs" />
+    <Compile Include="GameComponents\EnemyComponent.cs" />
     <Compile Include="GameComponents\InteractionComponent.cs" />
+    <Compile Include="GameComponents\WeaponComponent.cs" />
     <Compile Include="Manager\GameStateMachine.cs" />
     <Compile Include="Tools\BufferedInput.cs" />
     <Compile Include="Tools\Camera.cs" />

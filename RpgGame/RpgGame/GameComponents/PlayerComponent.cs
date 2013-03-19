@@ -16,96 +16,68 @@ namespace RpgGame.GameComponents
         private PlayerIndex Player              { get; set; }
         private int         ActionCounter       { get; set; }
         private int         ColorCounter        { get; set; }
-        private int         InteractionCooldown { get; set; }
-
-        private Rectangle InteractionRect   { get; set; }
+        private int         IgnoreInputSpan     { get; set; }
+        private bool        InteractionSwitch   { get; set; }
+        private bool        AttackSwitch        { get; set; }
+        private Rectangle   InteractionRect     { get; set; }
 
         public PlayerComponent(PlayerIndex player)
             : base("PlayerComponent")
         {
-            Player = player;
-            ActionCounter = 100;
+            IgnoreInputSpan = 0;
+            Player          = player;
+            ActionCounter   = 100;
+            AttackSwitch    = true;
         }
 
         public override void Update(GameTime gameTime)
         {
             InteractionRect = _CreateInteractionRect();
             Parent.Velocity = Vector2.Zero;
+
             AnimationComponent animComponent = Parent.GetComponent<AnimationComponent>();
             CollisionComponent collComponent = Parent.GetComponent<CollisionComponent>();
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
-            {
-                Parent.Velocity = new Vector2(Parent.Velocity.X, -2);
-            }
             
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            {
-                Parent.Velocity = new Vector2(Parent.Velocity.X, 2);
+            //Check if we currently accepting input.
+            if(IgnoreInputSpan > 0){
+                IgnoreInputSpan -= gameTime.ElapsedGameTime.Milliseconds;
+            }else{
+                //Process input (movement, attack, etc)
+                _ProcessInput();
+
+                //AttackSwitch determines if the attack button is still being pressed after an attack.
+                //if attack switch is true, then the user holds the attack button after having attacked
+                //normally. We start to charge the attack meter if the weapon has been leveled up so far.
+                if (AttackSwitch){
+
+                }
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {
-                Parent.Velocity = new Vector2(-2, Parent.Velocity.Y);
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            {
-                Parent.Velocity = new Vector2(2, Parent.Velocity.Y);
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            {
-                CollisionComponent component = Parent.GetComponent<CollisionComponent>();
-                if(component != null)
-                {
-                    if (InteractionCooldown <= 0)
-                    {
-                        EventManager.AddEventToQuery(new InteractionEvent(_CreateInteractionRect(), Parent));
+            if(IgnoreInputSpan <= 0){
+                if (Parent.Orientation.X == 1){
+                    if (Parent.Velocity != Vector2.Zero){
+                        animComponent.SetCurrentAnimation("WalkRight");
+                    }else{
+                        animComponent.SetCurrentAnimation("LookRight");
                     }
-                }
-            }
-
-            if (Parent.Orientation.X == 1)
-            {
-                if (Parent.Velocity != Vector2.Zero)
-                {
-                    animComponent.setCurrentAnimation("WalkRight");
-                }
-                else
-                {
-                    animComponent.setCurrentAnimation("LookRight");
-                }
-            }
-            else if (Parent.Orientation.X == -1)
-            {
-                if (Parent.Velocity != Vector2.Zero)
-                {
-                    animComponent.setCurrentAnimation("WalkLeft");
-                }
-                else
-                {
-                    animComponent.setCurrentAnimation("LookLeft");
-                }
-            }
-            else if (Parent.Orientation.Y == 1)
-            {
-                if (Parent.Velocity != Vector2.Zero)
-                {
-                    animComponent.setCurrentAnimation("WalkDown");
-                }else{
-                    animComponent.setCurrentAnimation("LookDown");
-                }
-            }
-            else if (Parent.Orientation.Y == -1)
-            {
-                if (Parent.Velocity != Vector2.Zero)
-                {
-                    animComponent.setCurrentAnimation("WalkUp");
-                }
-                else
-                {
-                    animComponent.setCurrentAnimation("LookUp");
+                }else if (Parent.Orientation.X == -1){
+                    if (Parent.Velocity != Vector2.Zero){
+                        animComponent.SetCurrentAnimation("WalkLeft");
+                    }else{
+                        animComponent.SetCurrentAnimation("LookLeft");
+                    }
+                }else if (Parent.Orientation.Y == 1){
+                    if (Parent.Velocity != Vector2.Zero){
+                        animComponent.SetCurrentAnimation("WalkDown");
+                    }else{
+                        animComponent.SetCurrentAnimation("LookDown");
+                    }
+                }else if (Parent.Orientation.Y == -1){
+                    if (Parent.Velocity != Vector2.Zero){
+                        animComponent.SetCurrentAnimation("WalkUp");
+                    }else{
+                        animComponent.SetCurrentAnimation("LookUp");
+                    }
                 }
             }
         }
@@ -155,5 +127,71 @@ namespace RpgGame.GameComponents
             
             return new Rectangle(x, y, width, height);
         }
+
+        public void Attack()
+        {
+            AnimationComponent AnimComponent = Parent.GetComponent<AnimationComponent>();
+
+            //Check the orientation of the player and play the associated animation.
+            if (AnimComponent != null){
+                if (Parent.Orientation.X != 0){
+                    if (Parent.Orientation.X == 1){
+                        AnimComponent.SetCurrentAnimation("AttackRight");
+                    }else{
+                        AnimComponent.SetCurrentAnimation("AttackLeft");
+                    }
+                }else{
+                    if (Parent.Orientation.Y == 1){
+                        AnimComponent.SetCurrentAnimation("AttackDown");
+                    }
+                    else{
+                        AnimComponent.SetCurrentAnimation("AttackUp");
+                    }
+                }
+            }
+
+            //Ignore user input until the animation is finished
+            IgnoreInputSpan = AnimComponent.GetCurrentAnimation().AnimationLength;
+        }
+
+        private void _ProcessInput()
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Up)){
+                Parent.Velocity = new Vector2(Parent.Velocity.X, -2);
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Down)){
+                Parent.Velocity = new Vector2(Parent.Velocity.X, 2);
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Left)){
+                Parent.Velocity = new Vector2(-2, Parent.Velocity.Y);
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Right)){
+                Parent.Velocity = new Vector2(2, Parent.Velocity.Y);
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space)){
+                CollisionComponent component = Parent.GetComponent<CollisionComponent>();
+                if (component != null && !InteractionSwitch){
+                    InteractionSwitch = true;
+                    EventManager.AddEventToQuery(new InteractionEvent(_CreateInteractionRect(), Parent));
+                }
+            }
+            else{
+                InteractionSwitch = false;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.X)){
+                if(!AttackSwitch){
+                    AttackSwitch = true;
+                    Attack();
+                }
+            }else if (Keyboard.GetState().IsKeyUp(Keys.X)){
+                AttackSwitch = false;
+            }
+        }
+
     }
 }

@@ -3,29 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace RpgGame.GameComponents
 {
     public class AnimationFrame
     {
-        public Texture2D texture;
-        public double duration;
-        public int x;
-        public int y;
+        public Texture2D Sprite     { get; set; }
+        public int       Duration   { get; set; }
+        public Vector2   Offset     { get; set; }
 
         public AnimationFrame()
         {
-            texture = null;
-            duration = 0;
-            x = y = 0;
+            Sprite      = null;
+            Duration    = 0;
+            Offset      = Vector2.Zero;
         }
 
-        public AnimationFrame(Texture2D texture, double duration, int x, int y)
+        public AnimationFrame(Texture2D sprite, int duration, int x, int y)
         {
-            this.texture = texture;
-            this.duration = duration;
-            this.x = x;
-            this.y = y;
+            Sprite      = sprite;
+            Duration    = duration;
+            Offset      = new Vector2(x,y);
+        }
+
+        public AnimationFrame(Texture2D sprite, int duration, Vector2 offset)
+        {
+            Sprite      = sprite;
+            Duration    = duration;
+            Offset      = offset;
         }
     }
 }

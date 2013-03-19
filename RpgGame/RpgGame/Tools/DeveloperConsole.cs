@@ -97,7 +97,7 @@ namespace RpgGame.Tools
 
             //Draw all messages reversed, starting from the last message
             Batch.Draw(Background,Vector2.Zero,Color.White);
-            for(int i = Messages.Count - 1;i > 0;--i){
+            for(int i = Messages.Count - 1;i >= 0;--i){
                 ConsoleMessage CurrentMessage = Messages.ElementAt<ConsoleMessage>(i);
                 Color          DrawColor      = Color.White;
 

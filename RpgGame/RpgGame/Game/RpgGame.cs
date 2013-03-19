@@ -151,24 +151,26 @@ namespace RpgGame
             test.AddComponent(new CollisionComponent(CollisionComponent.CollisionType.DYNAMIC, new Vector2(0, 16), 22, 16, null));
             test.AddComponent(new AnimationComponent());
 
-            test.GetComponent<AnimationComponent>().addAnimation(new SpritesheetAnimation("WalkDown", "Characters//Hero//walk_down",
+            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkDown", "Characters//Hero//walk_down",
                                                                  18, 36, 200, 5, AbstractAnimation.RepeatBehaviour.LoopAnimation));
-            test.GetComponent<AnimationComponent>().addAnimation(new SpritesheetAnimation("WalkLeft", "Characters//Hero//walk_left",
+            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkLeft", "Characters//Hero//walk_left",
                                                      30, 32, 200, 6, AbstractAnimation.RepeatBehaviour.LoopAnimation));
-            test.GetComponent<AnimationComponent>().addAnimation(new SpritesheetAnimation("WalkRight", "Characters//Hero//walk_right",
+            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkRight", "Characters//Hero//walk_right",
                                                      30, 32, 200, 6, AbstractAnimation.RepeatBehaviour.LoopAnimation));
-            test.GetComponent<AnimationComponent>().addAnimation(new SpritesheetAnimation("WalkUp", "Characters//Hero//walk_up",
+            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkUp", "Characters//Hero//walk_up",
                                                      17, 32, 200, 5, AbstractAnimation.RepeatBehaviour.LoopAnimation));
 
-            test.GetComponent<AnimationComponent>().addAnimation(new CustomAnimation("LookDown", new string[] { "Characters//Hero//stand_down" }, new double[] { 0 },
+            test.GetComponent<AnimationComponent>().AddAnimation(new ExternalAnimation("Animations//Hero//Attack_Down","AttackDown"));
+
+            test.GetComponent<AnimationComponent>().AddAnimation(new CustomAnimation("LookDown", new string[] { "Characters//Hero//stand_down" }, new int[] { 0 },
                                                                     AbstractAnimation.RepeatBehaviour.SingleAnimation));
-            test.GetComponent<AnimationComponent>().addAnimation(new CustomAnimation("LookUp", new string[] { "Characters//Hero//stand_up" }, new double[] { 0 },
+            test.GetComponent<AnimationComponent>().AddAnimation(new CustomAnimation("LookUp", new string[] { "Characters//Hero//stand_up" }, new int[] { 0 },
                                                         AbstractAnimation.RepeatBehaviour.SingleAnimation));
-            test.GetComponent<AnimationComponent>().addAnimation(new CustomAnimation("LookLeft", new string[] { "Characters//Hero//stand_left" }, new double[] { 0 },
+            test.GetComponent<AnimationComponent>().AddAnimation(new CustomAnimation("LookLeft", new string[] { "Characters//Hero//stand_left" }, new int[] { 0 },
                                                         AbstractAnimation.RepeatBehaviour.SingleAnimation));
-            test.GetComponent<AnimationComponent>().addAnimation(new CustomAnimation("LookRight", new string[] { "Characters//Hero//stand_right" }, new double[] { 0 },
+            test.GetComponent<AnimationComponent>().AddAnimation(new CustomAnimation("LookRight", new string[] { "Characters//Hero//stand_right" }, new int[] { 0 },
                                                         AbstractAnimation.RepeatBehaviour.SingleAnimation));
-            test.GetComponent<AnimationComponent>().setCurrentAnimation("LookDown");
+            test.GetComponent<AnimationComponent>().SetCurrentAnimation("LookDown");
 
             Layer MainLayer = CurrentGameWorld.Layers.Find(l => l.Name == "main");
             MainLayer.Objects.Add(test);

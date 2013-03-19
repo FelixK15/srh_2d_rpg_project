@@ -17,12 +17,12 @@ namespace RpgGame.GameComponents
 
         public override void Init()
         {
-            EventManager.AddListener(Event.Types.INTERACTION,this);
+            EventManager.AddListener(Event.Types.ON_INTERACTION,this);
         }
 
         ~InteractionComponent()
         {
-            EventManager.RemoveListener(Event.Types.INTERACTION,this);
+            EventManager.RemoveListener(Event.Types.ON_INTERACTION,this);
         }
 
         public void HandleEvent( Event GameEvent )
