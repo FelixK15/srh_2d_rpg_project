@@ -124,17 +124,20 @@
     <Compile Include="GameComponents\InteractionComponent.cs" />
     <Compile Include="GameComponents\Weapon.cs" />
     <Compile Include="GameComponents\WeaponComponent.cs" />
-    <None Include="GameScripts\Characters\Default.cs">
+    <None Include="Scripts\Characters\Default.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="GameScripts\Enemies\Default.cs">
+    <None Include="Scripts\Enemies\Default.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="GameScripts\Weapons\Default.cs">
+    <None Include="Scripts\Weapons\Default.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Compile Include="Manager\GameStateMachine.cs" />
     <Compile Include="Processes\PlayerAttackProcess.cs" />
+    <None Include="Scripts\Weapons\TestSword.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Compile Include="Tools\BufferedInput.cs" />
     <Compile Include="Tools\Camera.cs" />
     <Compile Include="Tools\CollisionChecker.cs" />

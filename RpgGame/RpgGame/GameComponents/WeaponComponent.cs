@@ -10,19 +10,31 @@ namespace RpgGame.GameComponents
 {
     class WeaponComponent : BaseGameComponent
     {
-        public  Weapon  CurrentWeapon       { get; set; }
+        private Weapon  _CurrentWeapon;
+        public  Weapon  CurrentWeapon       
+        { 
+            get
+            {
+                return _CurrentWeapon;
+            }
+            set
+            {
+                value.Parent = Parent;
+                _CurrentWeapon = value;
+            }
+        }
         private int     LastAttackLevel     { get; set; }
         private int     AttackPattern       { get; set; }
         private int     AttackOrientation   { get; set; } //AttackOrientation will get set based on the orientation of the character
 
-        private const int LEFT   = 0;
-        private const int RIGHT  = 1;
-        private const int TOP    = 2;
-        private const int BOTTOM = 3;
-
         public WeaponComponent(Weapon weapon) : base("WeaponComponent")
         {
-            CurrentWeapon = weapon;
+            _CurrentWeapon = weapon;
+        }
+
+        public override void Init()
+        {
+            _CurrentWeapon.Parent = Parent;
         }
 
         public override void Update(GameTime gameTime)
@@ -34,8 +46,6 @@ namespace RpgGame.GameComponents
         {
             LastAttackLevel = level;
 
-            CurrentWeapon.Parent = Parent;
-
             //Call function on the start of the attack (Parameter = player that started the attack and weapon level)
             if(CurrentWeapon != null){
                 CurrentWeapon.Script.CallFunction("OnAttack",new object[]{Parent,level});
@@ -43,15 +53,15 @@ namespace RpgGame.GameComponents
 
             if(Parent.Orientation.X != 0){
                 if(Parent.Orientation.X == 1){
-                    AttackOrientation = RIGHT;
+                    AttackOrientation = PlayerComponent.RIGHT;
                 }else{
-                    AttackOrientation = LEFT;
+                    AttackOrientation = PlayerComponent.LEFT;
                 }
             }else{
                 if(Parent.Orientation.Y == 1){
-                    AttackOrientation = BOTTOM;
+                    AttackOrientation = PlayerComponent.DOWN;
                 }else{
-                    AttackOrientation = TOP;
+                    AttackOrientation = PlayerComponent.UP;
                 }
             }
         }

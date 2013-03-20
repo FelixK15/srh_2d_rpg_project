@@ -147,25 +147,41 @@ namespace RpgGame
 
             GraphicSettings.Camera.Target = test;
 
-//             Weapon weapon = new Weapon();
-//             weapon.Name = "Sword";
-//             weapon.WeaponLevel = 1;
-//             weapon.
+            Weapon weapon = new Weapon("Scripts\\Weapons\\TestSword.cs");
+            weapon.Name = "Sword";
+            weapon.WeaponLevel = 3;
+            weapon.WalkAnimations[PlayerComponent.LEFT]     = "WalkLeft_Sword";
+            weapon.WalkAnimations[PlayerComponent.RIGHT]    = "WalkRight_Sword";
+            weapon.WalkAnimations[PlayerComponent.UP]       = "WalkUp_Sword";
+            weapon.WalkAnimations[PlayerComponent.DOWN]     = "WalkDown_Sword";
+            weapon.IdleAnimations[PlayerComponent.LEFT]     = "LookLeft";
+            weapon.IdleAnimations[PlayerComponent.RIGHT]    = "LookRight";
+            weapon.IdleAnimations[PlayerComponent.UP]       = "LookUp";
+            weapon.IdleAnimations[PlayerComponent.DOWN]     = "LookDown";
+            weapon.AttackDamagePerLevel[0] = 20;
+            weapon.AttackDamagePerLevel[1] = 50;
+            weapon.AttackDamagePerLevel[2] = 100;
+            weapon.AttackDamagePerLevel[3] = 200;
+            weapon.AttackDuration[0] = 20;
+            weapon.AttackDuration[1] = 20;
+            weapon.AttackDuration[2] = 20;
+            weapon.AttackDuration[3] = 20;
 
             test.AddComponent(new PlayerComponent(PlayerIndex.One));
             test.AddComponent(new CollisionComponent(CollisionComponent.CollisionType.DYNAMIC, new Vector2(0, 16), 22, 16, null));
             test.AddComponent(new AnimationComponent());
+            test.AddComponent(new WeaponComponent(weapon));
 
-            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkDown", "Characters//Hero//walk_down",
+            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkDown_Sword", "Characters//Hero//walk_down",
                                                                  18, 36, 200, 5, AbstractAnimation.RepeatBehaviour.LoopAnimation));
-            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkLeft", "Characters//Hero//walk_left",
+            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkLeft_Sword", "Characters//Hero//walk_left",
                                                      30, 32, 200, 6, AbstractAnimation.RepeatBehaviour.LoopAnimation));
-            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkRight", "Characters//Hero//walk_right",
+            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkRight_Sword", "Characters//Hero//walk_right",
                                                      30, 32, 200, 6, AbstractAnimation.RepeatBehaviour.LoopAnimation));
-            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkUp", "Characters//Hero//walk_up",
+            test.GetComponent<AnimationComponent>().AddAnimation(new SpritesheetAnimation("WalkUp_Sword", "Characters//Hero//walk_up",
                                                      17, 32, 200, 5, AbstractAnimation.RepeatBehaviour.LoopAnimation));
 
-            test.GetComponent<AnimationComponent>().AddAnimation(new ExternalAnimation("Animations//Hero//Attack_Down","AttackDown"));
+            test.GetComponent<AnimationComponent>().AddAnimation(new ExternalAnimation("Animations//Hero//Attack_Down","AttackDown_Sword"));
 
             test.GetComponent<AnimationComponent>().AddAnimation(new CustomAnimation("LookDown", new string[] { "Characters//Hero//stand_down" }, new int[] { 0 },
                                                                     AbstractAnimation.RepeatBehaviour.SingleAnimation));

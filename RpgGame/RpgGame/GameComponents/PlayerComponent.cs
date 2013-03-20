@@ -23,6 +23,16 @@ namespace RpgGame.GameComponents
 
         public  int         Experience          { get; set; }
 
+        public  string[]    WalkAnimations      { get; set; }
+        public  string[]    IdleAnimations      { get; set; }
+
+        public const int LEFT   = 0;
+        public const int RIGHT  = 1;
+        public const int UP     = 2;
+        public const int DOWN   = 3;
+
+        public const int MAX_DIRECTIONS = 4;
+
         public PlayerComponent(PlayerIndex player)
             : base("PlayerComponent")
         {
@@ -30,6 +40,9 @@ namespace RpgGame.GameComponents
             Player          = player;
             AttackCounter   = 100;
             AttackSwitch    = true;
+
+            WalkAnimations  = new string[MAX_DIRECTIONS];
+            IdleAnimations  = new string[MAX_DIRECTIONS];
         }
 
         public override void Update(GameTime gameTime)
@@ -48,17 +61,24 @@ namespace RpgGame.GameComponents
                 //Process input (movement, attack, etc)
                 _ProcessInput();
 
+                if(AttackCounter < 100){
+                    ++AttackCounter;
+                }
+
                 //AttackSwitch determines if the attack button is still being pressed after an attack.
                 //if attack switch is true, then the user holds the attack button after having attacked
                 //normally. We start to charge the attack meter if the weapon has been leveled up so far.
                 if (AttackSwitch){
                     if(weapComponent != null){
                         if(weapComponent.CurrentWeapon != null){
-                            int maxAttackCounterMultiplier = (int)(weapComponent.CurrentWeapon.Kills * 0.01);
-                            maxAttackCounterMultiplier = maxAttackCounterMultiplier > 3 ? 3 : maxAttackCounterMultiplier;
-                            int maxAttackCounter = 100 * ( maxAttackCounterMultiplier == 0 ? 1 : maxAttackCounterMultiplier );
-                            if(AttackCounter < maxAttackCounter){
-                                ++AttackCounter;
+                            if(AttackCounter >= 100){
+                                int maxAttackCounterMultiplier = weapComponent.CurrentWeapon.WeaponLevel;
+                                maxAttackCounterMultiplier = maxAttackCounterMultiplier > 3 ? 3 : maxAttackCounterMultiplier;
+                                int maxAttackCounter = 100 * (maxAttackCounterMultiplier == 0 ? 1 : maxAttackCounterMultiplier);
+                                if (AttackCounter < maxAttackCounter)
+                                {
+                                    ++AttackCounter;
+                                }
                             }
                         }
                     }
@@ -68,27 +88,27 @@ namespace RpgGame.GameComponents
             if(IgnoreInputSpan <= 0){
                 if (Parent.Orientation.X == 1){
                     if (Parent.Velocity != Vector2.Zero){
-                        animComponent.SetCurrentAnimation("WalkRight");
+                        animComponent.SetCurrentAnimation(WalkAnimations[RIGHT]);
                     }else{
-                        animComponent.SetCurrentAnimation("LookRight");
+                        animComponent.SetCurrentAnimation(IdleAnimations[RIGHT]);
                     }
                 }else if (Parent.Orientation.X == -1){
                     if (Parent.Velocity != Vector2.Zero){
-                        animComponent.SetCurrentAnimation("WalkLeft");
+                        animComponent.SetCurrentAnimation(WalkAnimations[LEFT]);
                     }else{
-                        animComponent.SetCurrentAnimation("LookLeft");
+                        animComponent.SetCurrentAnimation(IdleAnimations[LEFT]);
                     }
                 }else if (Parent.Orientation.Y == 1){
                     if (Parent.Velocity != Vector2.Zero){
-                        animComponent.SetCurrentAnimation("WalkDown");
+                        animComponent.SetCurrentAnimation(WalkAnimations[DOWN]);
                     }else{
-                        animComponent.SetCurrentAnimation("LookDown");
+                        animComponent.SetCurrentAnimation(IdleAnimations[DOWN]);
                     }
                 }else if (Parent.Orientation.Y == -1){
                     if (Parent.Velocity != Vector2.Zero){
-                        animComponent.SetCurrentAnimation("WalkUp");
+                        animComponent.SetCurrentAnimation(WalkAnimations[UP]);
                     }else{
-                        animComponent.SetCurrentAnimation("LookUp");
+                        animComponent.SetCurrentAnimation(IdleAnimations[UP]);
                     }
                 }
             }
@@ -98,6 +118,7 @@ namespace RpgGame.GameComponents
         {
             if (InteractionRect.Width > 0 && InteractionRect.Height > 0)
             {
+                SpriteFont font = RpgGame.ContentManager.Load<SpriteFont>("Fonts\\Arial");
                 Texture2D test = new Texture2D(GraphicSettings.GraphicDevice, InteractionRect.Width, InteractionRect.Height);
                 Color[] data = new Color[test.Width * test.Height];
                 for (int i = 0; i < data.Length; ++i)
@@ -106,6 +127,7 @@ namespace RpgGame.GameComponents
                 }
                 test.SetData<Color>(data);
                 batch.Draw(test, InteractionRect, Color.White);
+                batch.DrawString(font,String.Format("AttackCounter: {0}",AttackCounter),Vector2.Zero,Color.Red);
                 test.Dispose();
             }
         }
@@ -149,24 +171,7 @@ namespace RpgGame.GameComponents
             //Set the associated weapon animations
             if(WeapComponent != null){
                 WeapComponent.StartAttack(AttackCounter / 100);
-            }
-
-            //Check the orientation of the player and play the associated animation.
-            if (AnimComponent != null){
-                if (Parent.Orientation.X != 0){
-                    if (Parent.Orientation.X == 1){
-                        AnimComponent.SetCurrentAnimation("AttackRight");
-                    }else{
-                        AnimComponent.SetCurrentAnimation("AttackLeft");
-                    }
-                }else{
-                    if (Parent.Orientation.Y == 1){
-                        AnimComponent.SetCurrentAnimation("AttackDown");
-                    }
-                    else{
-                        AnimComponent.SetCurrentAnimation("AttackUp");
-                    }
-                }
+                AttackCounter = 0;
             }
 
             //Ignore user input until the animation is finished
@@ -208,7 +213,12 @@ namespace RpgGame.GameComponents
                     Attack();
                 }
             }else if (Keyboard.GetState().IsKeyUp(Keys.X)){
-                AttackSwitch = false;
+                if(AttackSwitch){
+                    AttackSwitch = false;
+                    if(AttackCounter > 100){
+                         Attack();
+                    }
+                }
             }
         }
 
