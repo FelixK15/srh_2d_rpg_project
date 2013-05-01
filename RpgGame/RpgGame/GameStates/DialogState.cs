@@ -17,7 +17,7 @@ namespace RpgGame.GameStates
         public DialogState(Dialog dialog)
         {
             currentDialog = dialog;
-            
+            Start();
         }
 
         public void Start()

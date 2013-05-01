@@ -139,6 +139,7 @@ namespace RpgGame.Dialogs
         public static void stopDialog()
         {
             show = false;
+            GameStateMachine.RemoveTopState();
         }
 
         public static void startDialog(Dialog currentDialogVar)
