@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using RpgGame;
 using RpgGame.GameComponents;
 using RpgGame.Tools;
+using RpgGame.Manager;
 
 namespace ConsoleContext
 {
@@ -37,5 +38,12 @@ namespace ConsoleContext
         {
             DeveloperConsole.AddMessage(DeveloperConsole.MessageType.DEBUG,a + b + c + d);
         }
+
+        //public void gamestates()
+        //{
+        //    String Output = "";
+            
+        //    DeveloperConsole.AddMessage(DeveloperConsole.MessageType.TRACE, Output);
+        //}
     }
 }

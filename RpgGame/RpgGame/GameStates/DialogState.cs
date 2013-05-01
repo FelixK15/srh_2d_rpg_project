@@ -10,14 +10,13 @@ using RpgGame.Manager;
 
 namespace RpgGame.GameStates
 {
-    class DialogState : IGameState, IEventListener
+    public class DialogState : IGameState, IEventListener
     {
         public Dialog currentDialog { get; set; }
 
         public DialogState(Dialog dialog)
         {
             currentDialog = dialog;
-            Start();
         }
 
         public void Start()
@@ -39,7 +38,6 @@ namespace RpgGame.GameStates
         public void Stop()
         {
             EventManager.RemoveListener(Event.Types.KEYBOARD_PRESSED, this);
-            DialogBox.stopDialog();
         }
 
         public void HandleEvent(Event eGameEvent)
@@ -50,8 +48,16 @@ namespace RpgGame.GameStates
 
                 if (keyEvent.PressedKey == Keys.A)
                 {
-                    DialogBox.NextText();
+                    if (!DialogBox.isMessageDrawn())
+                    {
+                        DialogBox.drawFullMessage();
+                    }
+                    else
+                    {
+                        DialogBox.NextText();
+                    }
                 }
+               
             }
         }
     }

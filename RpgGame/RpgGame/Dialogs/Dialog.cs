@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RpgGame.Dialogs
 {
-    class Dialog
+    public class Dialog
     {
         public List<DialogNode> DialogNodes;
         public int currentDialogNodeIndex;

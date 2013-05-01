@@ -71,7 +71,7 @@ namespace RpgGame.Menu
             {
                 return CompareTo(obj as RingMenuItem);
             }
-
+            
             return 0;
         }
     }

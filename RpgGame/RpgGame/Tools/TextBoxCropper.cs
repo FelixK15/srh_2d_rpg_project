@@ -18,25 +18,33 @@ namespace RpgGame.Tools
             float textHeight = 0;
             String[] words = message.Split(' ');
             foreach(String word in words){
-                if (spriteFont.MeasureString(line + word).X > destinationBox.Width)
+                if (spriteFont.MeasureString(line + word).X >= destinationBox.Width - 5)
                 {
-                    textHeight += spriteFont.MeasureString(word).Y;
+                    textHeight += spriteFont.MeasureString(word).Y- 2;
                     if (textHeight < destinationBox.Height)
                     {
                         box += line + "\n";
                     }
                     else
-                    {
+                    {                       
                         returnMessages.Add(box);
-                        box = "";
-                        textHeight = 0;
+                        box = line + "\n";
+                        textHeight = spriteFont.MeasureString(word).Y;
                     }
                     line = "";
                 }
-                line += word + " ";  
+                line += word + " ";                 
             }
-            box += line;
-            returnMessages.Add(box);
+            if (line != "")
+            {
+                if(textHeight + spriteFont.MeasureString(line).Y < destinationBox.Height){
+                    box+=line;
+                } else{
+                    returnMessages.Add(box);
+                    box = line;
+                }
+            }
+            if (box != "") returnMessages.Add(box);
             return returnMessages;
         }
     }

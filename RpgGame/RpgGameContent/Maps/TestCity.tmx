@@ -16,7 +16,7 @@
    <property name="level" value="0"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3UOU4DMRTG8XFHGQS3AAUSKghwAdAkqVh7mhAq1guQe7B0FKw9kAoKVtGyXIOGvxVbcSxrEuwwNGPpp5m8cd6XZylTElE0jRnMYhJTKAXWv6NkS+xZxgpWsYBFEV7vlnvGnnNc4BJXOBWturzuYg+b2MI2dnqod8t9ZM8TnvGCVzyIVl1efddbD9lJfFeaWaH5MWrKAQ5xhGMUHSZwjX000FTfjT1yc4rsd4Nb1a/iUMU7PvCJL4x65uYVu1/dYQMFa/6GCJvX1U87Me7LPBsQ7fl9c/W8ZXWWsmfVyJXnaOauqz16ft9zbhr96qqn7Hcn2u5F5/zjKGItYF6Zaxoxannj3pWrP/vk2mteSVo6V6/f5tYcdK7rmaZzzVrIu9KWE50GrXPuZ1aSOZUvcwsYsgz/8W+J5f/YoZLiGUhjKef9d24mk8n00w+MtFzlEA4AAA==
+   H4sIAAAAAAAAC+3Uu04CQRTGcaazxOhbSFCwUtQX0CxQee1tECuvLyDv4aWz8NqrVFrgLbZeXsPG/4SZMEwmC87g2uwkv+xydjgfZxK2JDKZGcxiDlOYRimw/p2Jt8yeFaxiDYtYEuH1Xrnn7LnAJa5wjTPRrsvrHvaxhW3sYLePeq/cR/Y84RkveEVLtOvy6rve+siO47uSzArNj1BTDnGEY5yg6DCJGxyggab6buSRm1Vkv1vcqX4Vhyre8YFPfCHnmZtX7H51h00UrPkbImxeVz/t1Lgv82xIdOb3zdXzltVZyp5VI1eeo5m7ofbo+X3PuWn0q6uest+96HgQ3fNPoIj1gHllrmnMqOWNe1eu/uyTa68FJW7pXL1+m1tz0LmuZ5rONWsh70pbVnQbts55kFlx5lW+zC1gxDL6x78lkv9jh0qCZyCNJ5yn5f4hM5VKpQbtB2Bsb+cQDgAA
   </data>
  </layer>
  <layer name="details" width="30" height="30">
@@ -43,6 +43,11 @@
    <properties>
     <property name="interaction" value=""/>
     <property name="script" value="Scripts\test.cs"/>
+   </properties>
+  </object>
+  <object name="dialogtest" gid="44" x="369" y="285" width="32" height="32">
+   <properties>
+    <property name="script" value="Scripts\dialogtest.cs"/>
    </properties>
   </object>
  </objectgroup>

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RpgGame.Dialogs
 {
-    class DialogNode
+    public class DialogNode
     {
         public string Actor{ get; set; }
         public string Text{ get; set; }

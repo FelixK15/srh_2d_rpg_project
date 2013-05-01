@@ -51,3 +51,4 @@ C:\Users\Tobias\Desktop\RPGProject Neu\rpg-xna-project\ConsoleContext\bin\Debug\
 C:\Users\Tobias\Desktop\RPGProject Neu\rpg-xna-project\ConsoleContext\bin\Debug\Content\Dialog\Dialogs.xnb
 C:\Users\Tobias\Desktop\RPGProject Neu\rpg-xna-project\ConsoleContext\bin\Debug\Dialog Importer.dll
 C:\Users\Tobias\Desktop\RPGProject Neu\rpg-xna-project\ConsoleContext\bin\Debug\Dialog Importer.pdb
+C:\Users\Tobias\Desktop\RPGProject Neu\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\Dialog\doublearrow.xnb

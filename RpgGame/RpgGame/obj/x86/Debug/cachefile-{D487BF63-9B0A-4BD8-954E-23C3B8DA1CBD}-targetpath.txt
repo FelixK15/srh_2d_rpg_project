@@ -32,3 +32,4 @@ Content\Fonts\test.xnb
 Content\Fonts\Arial.xnb
 Content\Maps\TestCity.xnb
 Content\Dialog\Dialogs.xnb
+Content\Overlays\Dialog\doublearrow.xnb
