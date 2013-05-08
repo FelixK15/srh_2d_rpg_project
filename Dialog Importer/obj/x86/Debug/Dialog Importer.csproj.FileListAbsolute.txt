@@ -1,0 +1,10 @@
+C:\Users\Tobias\Desktop\RPGProject\rpg-xna-project\Dialog Importer\bin\x86\Debug\Dialog Importer.dll
+C:\Users\Tobias\Desktop\RPGProject\rpg-xna-project\Dialog Importer\bin\x86\Debug\Dialog Importer.pdb
+C:\Users\Tobias\Desktop\RPGProject\rpg-xna-project\Dialog Importer\obj\x86\Debug\Dialog Importer.dll
+C:\Users\Tobias\Desktop\RPGProject\rpg-xna-project\Dialog Importer\obj\x86\Debug\Dialog Importer.pdb
+C:\Users\Tobias\Desktop\RPGProject\rpg-xna-project\Dialog Importer\obj\x86\Debug\Dialog Importer.csprojResolveAssemblyReference.cache
+C:\Users\Tobias\Desktop\RPGProject Neu\rpg-xna-project\Dialog Importer\bin\x86\Debug\Dialog Importer.dll
+C:\Users\Tobias\Desktop\RPGProject Neu\rpg-xna-project\Dialog Importer\bin\x86\Debug\Dialog Importer.pdb
+C:\Users\Tobias\Desktop\RPGProject Neu\rpg-xna-project\Dialog Importer\obj\x86\Debug\Dialog Importer.csprojResolveAssemblyReference.cache
+C:\Users\Tobias\Desktop\RPGProject Neu\rpg-xna-project\Dialog Importer\obj\x86\Debug\Dialog Importer.dll
+C:\Users\Tobias\Desktop\RPGProject Neu\rpg-xna-project\Dialog Importer\obj\x86\Debug\Dialog Importer.pdb
