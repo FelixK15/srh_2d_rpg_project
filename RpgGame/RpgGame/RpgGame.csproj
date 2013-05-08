@@ -115,12 +115,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dialogs\Dialog.cs" />
-    <Compile Include="Dialogs\DialogBox.cs" />
-    <Compile Include="Dialogs\DialogNode.cs" />
     <Compile Include="Events\InteractionEvent.cs" />
     <Compile Include="GameComponents\InteractionComponent.cs" />
-    <Compile Include="GameStates\DialogState.cs" />
     <Compile Include="Manager\GameStateMachine.cs" />
     <Compile Include="Tools\BufferedInput.cs" />
     <Compile Include="Tools\Camera.cs" />
@@ -143,9 +139,7 @@
     <Compile Include="GameComponents\BaseGameComponent.cs" />
     <Compile Include="GameComponents\EventComponent.cs" />
     <Compile Include="Tools\DeveloperConsole.cs" />
-    <Compile Include="Tools\DialogLoader.cs" />
     <Compile Include="Tools\GameWorldLoaderExtensions.cs" />
-    <Compile Include="Tools\TextBoxCropper.cs" />
     <Compile Include="Tools\Texture2DFiller.cs" />
     <Compile Include="World\GameWorld.cs" />
     <Compile Include="Processes\EventProcess.cs" />
@@ -214,10 +208,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Dialog Importer\Dialog Importer.csproj">
-      <Project>{51a3a76d-6b62-4a90-a95d-c1c2736a3543}</Project>
-      <Name>Dialog Importer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RpgGameContent\RpgGameContent.contentproj">
       <Project>{D487BF63-9B0A-4BD8-954E-23C3B8DA1CBD}</Project>
       <Name>RpgGameContent %28Content%29</Name>

@@ -1,5 +1,0 @@
-C:\Users\Tobias\Desktop\Projekt neu neu\rpg-xna-project\GameWorld Importer\bin\x86\Debug\GameWorld Importer.dll
-C:\Users\Tobias\Desktop\Projekt neu neu\rpg-xna-project\GameWorld Importer\bin\x86\Debug\GameWorld Importer.pdb
-C:\Users\Tobias\Desktop\Projekt neu neu\rpg-xna-project\GameWorld Importer\obj\x86\Debug\GameWorld Importer.csprojResolveAssemblyReference.cache
-C:\Users\Tobias\Desktop\Projekt neu neu\rpg-xna-project\GameWorld Importer\obj\x86\Debug\GameWorld Importer.dll
-C:\Users\Tobias\Desktop\Projekt neu neu\rpg-xna-project\GameWorld Importer\obj\x86\Debug\GameWorld Importer.pdb

@@ -1,5 +1,0 @@
-C:\Users\Tobias\Desktop\Projekt neu neu\rpg-xna-project\Animation Importer\bin\x86\Debug\Animation Importer.dll
-C:\Users\Tobias\Desktop\Projekt neu neu\rpg-xna-project\Animation Importer\bin\x86\Debug\Animation Importer.pdb
-C:\Users\Tobias\Desktop\Projekt neu neu\rpg-xna-project\Animation Importer\obj\x86\Debug\Animation Importer.csprojResolveAssemblyReference.cache
-C:\Users\Tobias\Desktop\Projekt neu neu\rpg-xna-project\Animation Importer\obj\x86\Debug\Animation Importer.dll
-C:\Users\Tobias\Desktop\Projekt neu neu\rpg-xna-project\Animation Importer\obj\x86\Debug\Animation Importer.pdb
