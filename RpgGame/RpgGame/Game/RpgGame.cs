@@ -159,7 +159,7 @@ namespace RpgGame
             weapon.IdleAnimations[PlayerComponent.UP]       = "LookUp";
             weapon.IdleAnimations[PlayerComponent.DOWN]     = "LookDown";
             weapon.AttackDamagePerLevel[0] = 20;
-            weapon.AttackDamagePerLevel[1] = 50;
+            weapon.AttackDamagePerLevel[1] = 350;
             weapon.AttackDamagePerLevel[2] = 100;
             weapon.AttackDamagePerLevel[3] = 200;
             weapon.AttackDuration[0] = 20;
@@ -195,6 +195,15 @@ namespace RpgGame
 
             Layer MainLayer = CurrentGameWorld.Layers.Find(l => l.Name == "main");
             MainLayer.Objects.Add(test);
+
+            GameObject enemy = new GameObject("Enemy");
+            enemy.AddComponent(new EnemyComponent(100,100,10,10));
+            enemy.AddComponent(new RenderableComponent("Characters\\NPC1\\look_down"));
+            enemy.AddComponent(new CollisionComponent(CollisionComponent.CollisionType.STATIC,new Vector2(0,10),10,10,null));
+
+            enemy.Position = new Vector2(300,300);
+
+            MainLayer.Objects.Add(enemy);
 
             GameStateMachine.AddState(new GameWorldState(CurrentGameWorld));
         }

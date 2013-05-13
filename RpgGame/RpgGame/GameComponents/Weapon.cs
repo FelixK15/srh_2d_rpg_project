@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace RpgGame.GameComponents
 {
-    class Weapon
+    public class Weapon
     {
         private GameObject  _Parent;
 

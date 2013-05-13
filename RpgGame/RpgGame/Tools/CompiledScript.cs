@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace RpgGame.Tools
 {
-    class CompiledScript
+    public class CompiledScript
     {        
         public string           FilePath                { get; set; }
         public string           ClassName               { get; set; }

@@ -10,7 +10,7 @@ using RpgGame.Events;
 namespace RpgGame.Processes
 {
     //This process raises events for a specific amount of time
-    class PlayerAttackProcess : Process
+    public class PlayerAttackProcess : Process
     {
         private Weapon      UsedWeapon      { get; set; }
         private Rectangle   AttackArea      { get; set; }

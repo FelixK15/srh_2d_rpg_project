@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace RpgGame.Processes
 {
-    abstract class Process
+    abstract public class Process
     {
         public abstract void Start();
         public abstract void Update(GameTime gameTime);

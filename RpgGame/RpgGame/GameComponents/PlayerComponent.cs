@@ -153,7 +153,7 @@ namespace RpgGame.GameComponents
             int y = (int)(component.Position.Y + component.Offset.Y) + (int)(Parent.Orientation.Y * height);
 
             //If the player is facing down or right, we have to add the
-            //dimension of the collisioncomponent as well
+            //dimension of the collision component as well
             if(Parent.Orientation.X > 0){
                 x += component.Width;
             }else if (Parent.Orientation.Y > 0){

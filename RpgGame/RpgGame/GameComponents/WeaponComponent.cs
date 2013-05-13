@@ -8,7 +8,7 @@ using RpgGame.Events;
 
 namespace RpgGame.GameComponents
 {
-    class WeaponComponent : BaseGameComponent
+    public class WeaponComponent : BaseGameComponent
     {
         private Weapon  _CurrentWeapon;
         public  Weapon  CurrentWeapon       

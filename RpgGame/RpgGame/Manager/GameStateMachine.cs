@@ -12,23 +12,34 @@ namespace RpgGame.Manager
         public static IGameState       CurrentState 
         { 
             get{
-                return GameStates.Last<IGameState>();
+                if(GameStates.Count > 0){
+                    return GameStates.Last<IGameState>();
+                }
+
+                return null;
             }
         }
         
         public static void Initialize()
         {
             GameStates = new List<IGameState>();
+            
         }
 
         public static void AddState(IGameState State)
         {
+            if(CurrentState != null){
+                CurrentState.Stop();
+            }
+
             GameStates.Add(State);
+            State.Start();
         }
 
         public static void RemoveTopState()
         {
             if(GameStates.Count > 0){
+                CurrentState.Stop();
                 GameStates.Remove(CurrentState);
             }
         }

@@ -5,6 +5,7 @@ using System.Text;
 using RpgGame.Events;
 using RpgGame.Manager;
 using Microsoft.Xna.Framework;
+using RpgGame.Tools;
 
 namespace RpgGame.GameComponents
 {
@@ -12,10 +13,13 @@ namespace RpgGame.GameComponents
     {
         private static Random DamageRandom = new Random();
 
-        public int Health       { get; set; }
-        public int Experience   { get; set; }
-        public int AttackDamage { get; set; }
-        public int Defense      { get; set; }
+        public  int Health       { get; set; }
+        public  int Experience   { get; set; }
+        public  int AttackDamage { get; set; }
+        public  int Defense      { get; set; }
+        private int HitCoolDown  { get; set; }
+
+        private const int HIT_COOLDOWN = 100;
 
         public bool IsDead {
             get 
@@ -36,14 +40,33 @@ namespace RpgGame.GameComponents
             EventManager.AddListener(Event.Types.ON_PLAYER_ATTACK,this);
         }
 
+        public EnemyComponent(int health,int experience,int damage,int defense) : this()
+        {
+            Health          = health;
+            Experience      = experience;
+            AttackDamage    = damage;
+            Defense         = damage;
+        }
+
         ~EnemyComponent()
         {
             EventManager.RemoveListener(Event.Types.ON_PLAYER_ATTACK,this);
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            if(HitCoolDown > 0){
+                HitCoolDown -= gameTime.ElapsedGameTime.Milliseconds;
+            }
+        }
+
         public void HandleEvent(Event GameEvent)
         {
             if(GameEvent is PlayerAttackEvent){
+                if(HitCoolDown > 0){
+                    return;
+                }
+
                 PlayerAttackEvent attackEvent = (PlayerAttackEvent)GameEvent;
 
                 //get the collision component of the enemy and check for intersections with the attack area
@@ -65,10 +88,12 @@ namespace RpgGame.GameComponents
                             }
 
                             //calculate the damage based on the armor of the enemy
-                            damage = (Defense / 100) * damage;
+                            damage = (int)(((float)Defense / 100.0f) * damage);
 
                             //0 - 10% of the armor will get ignored by the attack
-                            damage += (int)((DamageRandom.NextDouble() * 10) * attackEvent.AttackedWeapon.AttackDamagePerLevel[attackEvent.AttackLevel]);
+                            damage += (int)((DamageRandom.Next(0,10) / 100.0f) * attackEvent.AttackedWeapon.AttackDamagePerLevel[attackEvent.AttackLevel]);
+
+                            DeveloperConsole.AddMessage(Tools.DeveloperConsole.MessageType.DEBUG,String.Format("Hit '{0}' with {1} damage",Parent.Name,damage));
 
                             //call function in enemy script (Parameter = Weapon that hit the enemy, damage of that attack)
                             ScriptComponent scriptComponent = Parent.GetComponent<ScriptComponent>();
@@ -76,16 +101,22 @@ namespace RpgGame.GameComponents
                                 scriptComponent.CallFunction("OnAttack",new object[]{attackEvent.AttackedWeapon,damage});
                             }
 
-                            //increment health based on damage and check if the enemy is dead.
+                            //decrement health based on damage and check if the enemy is dead.
                             Health -= damage;
 
+                            HitCoolDown = HIT_COOLDOWN;
+
                             if(Health <= 0){
-                                //Call onDeath function (Parameter = player that killed the enemy
+                                //Call onDeath function (Parameter = player that killed the enemy)
                                 if(scriptComponent != null){
                                     scriptComponent.CallFunction("OnDeath",new object[]{attackEvent.AttackedWeapon.Parent});
                                 }
 
                                 ++attackEvent.AttackedWeapon.Kills;
+                                
+                                foreach(BaseGameComponent component in Parent.Components){
+                                    component.Active = false;
+                                }
                             }
 
                             //add experience to the players experience
