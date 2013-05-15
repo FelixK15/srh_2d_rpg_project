@@ -12,7 +12,7 @@ namespace RpgGame.Dialogs
 {
     public static class DialogBox
     {
-        static Rectangle boxSize, txtSize, actorSize, arrowSize;
+        static Rectangle boxSize, txtSize, actorSize; //, arrowSize;
         static Texture2D background, borderImage, arrowImage;
         static SpriteFont spriteFont;
         static Color borderColor;
@@ -24,10 +24,10 @@ namespace RpgGame.Dialogs
         static DialogNode currentDialogNode;
         static float elapsedTime, messageTimer;
         const float messageSpeed = 0.051f;
-        private static Vector2 _textPosition, _namePosition, offset, _arrowPosition;
+        private static Vector2 _textPosition, _namePosition, offset; //, _arrowPosition;
         static Vector2 TextPosition { get { return _textPosition; } set { _textPosition = value; } }
         static Vector2 NamePosition { get { return _namePosition; } set { _namePosition = value; } }
-        static Vector2 ArrowPosition { get { return _arrowPosition; } set { _arrowPosition = value; } }
+        //static Vector2 ArrowPosition { get { return _arrowPosition; } set { _arrowPosition = value; } }
         private static List<Dialog> allDialogs;
 
 
@@ -85,7 +85,7 @@ namespace RpgGame.Dialogs
             TextPosition = new Vector2(GraphicSettings.GraphicDevice.Adapter.CurrentDisplayMode.Width/18, GraphicSettings.GraphicDevice.Adapter.CurrentDisplayMode.Height/5);
             background = RpgGame.ContentManager.Load<Texture2D>("Overlays/Dialog/dialog_background");
             borderImage = RpgGame.ContentManager.Load<Texture2D>("Overlays/Dialog/border");
-            arrowImage = RpgGame.ContentManager.Load<Texture2D>("Overlays/Dialog/doublearrow");
+            //arrowImage = RpgGame.ContentManager.Load<Texture2D>("Overlays/Dialog/doublearrow");
             borderColor = Color.Black;
             borderWidth = 2;
             offset = new Vector2(4, 1);
@@ -93,9 +93,9 @@ namespace RpgGame.Dialogs
             boxSize = new Rectangle((int)TextPosition.X, (int)TextPosition.Y, GraphicSettings.GraphicDevice.Adapter.CurrentDisplayMode.Width / 10, GraphicSettings.GraphicDevice.Adapter.CurrentDisplayMode.Height / 14);
             txtSize = new Rectangle(boxSize.X + 10, boxSize.Y + 10, boxSize.Width - 20, boxSize.Height - 20);
             actorSize = new Rectangle((int)TextPosition.X, (int)TextPosition.Y+boxSize.Y, GraphicSettings.GraphicDevice.Adapter.CurrentDisplayMode.Width / 25, GraphicSettings.GraphicDevice.Adapter.CurrentDisplayMode.Height / 50);
-            arrowSize = new Rectangle((int)TextPosition.X, (int)TextPosition.Y+boxSize.Y, GraphicSettings.GraphicDevice.Adapter.CurrentDisplayMode.Width / 100, GraphicSettings.GraphicDevice.Adapter.CurrentDisplayMode.Height / 150);
+            //arrowSize = new Rectangle((int)TextPosition.X, (int)TextPosition.Y+boxSize.Y, GraphicSettings.GraphicDevice.Adapter.CurrentDisplayMode.Width / 100, GraphicSettings.GraphicDevice.Adapter.CurrentDisplayMode.Height / 150);
             NamePosition = new Vector2((int)TextPosition.X, (int)TextPosition.Y+boxSize.Y);
-            ArrowPosition = new Vector2((int)TextPosition.X - boxSize.X, (int)TextPosition.Y - boxSize.Y);
+            //ArrowPosition = new Vector2((int)TextPosition.X - boxSize.X, (int)TextPosition.Y - boxSize.Y);
             show = false;
         }
 
@@ -132,8 +132,8 @@ namespace RpgGame.Dialogs
                 actorSize.Width = nameBoxWidth+10;
                 _namePosition.X = (int)TextPosition.X;
                 _namePosition.Y = (int)(TextPosition.Y - boxSize.Height / 2.8);
-                arrowSize.X = (int)boxSize.X +txtSize.Width;
-                arrowSize.Y = (int)boxSize.Y +txtSize.Height;
+                //arrowSize.X = (int)boxSize.X +txtSize.Width;
+                //arrowSize.Y = (int)boxSize.Y +txtSize.Height;
             }
         }
 
