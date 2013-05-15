@@ -8,7 +8,7 @@ using RpgGame.Events;
 
 namespace RpgGame.GameComponents
 {
-    class InteractionComponent : BaseGameComponent, IEventListener
+    public class InteractionComponent : BaseGameComponent, IEventListener
     {
         public InteractionComponent() : base("InteractionComponent")
         {

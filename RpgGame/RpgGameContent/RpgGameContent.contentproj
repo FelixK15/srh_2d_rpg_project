@@ -61,7 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fonts\" />
     <Folder Include="Fonts\Bitmap\" />
     <Folder Include="Music\" />
     <Folder Include="Sounds\" />
@@ -245,18 +244,23 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maps\TestMapByte64.tmx">
+    <Compile Include="Fonts\test.spritefont">
+      <Name>test</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <None Include="Maps\TestMapByte64.tmx">
       <Name>TestMapByte64</Name>
       <Importer>MapImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maps\TestMapByte64.tmx">
+    <None Include="Maps\TestMapByte64.tmx">
       <Name>TestMapByte64</Name>
       <Importer>MapImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Maps\TestCity.tmx">
@@ -269,6 +273,40 @@
       <Name>Arial</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dialog\Dialogs.xml">
+      <Name>Dialogs</Name>
+      <Importer>DialogImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Overlays\Dialog\border.png">
+      <Name>border</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Overlays\Dialog\dialog_background.jpg">
+      <Name>dialog_background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Dialog Importer\Dialog Importer.csproj">
+      <Project>{51a3a76d-6b62-4a90-a95d-c1c2736a3543}</Project>
+      <Name>Dialog Importer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Overlays\Dialog\doublearrow.jpg">
+      <Name>doublearrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

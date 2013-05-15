@@ -23,12 +23,18 @@ namespace RpgGame.Manager
 
         public static void AddState(IGameState State)
         {
+            if (GameStates.Count > 0)
+            {
+                CurrentState.Stop();
+            }
             GameStates.Add(State);
+            CurrentState.Start();
         }
 
         public static void RemoveTopState()
         {
             if(GameStates.Count > 0){
+                CurrentState.Stop();
                 GameStates.Remove(CurrentState);
             }
         }
