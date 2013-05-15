@@ -1,0 +1,10 @@
+E:\Programming\Own Projects\C#\rpg-xna-project\Animation Importer\bin\x86\Debug\Animation Importer.dll
+E:\Programming\Own Projects\C#\rpg-xna-project\Animation Importer\bin\x86\Debug\Animation Importer.pdb
+E:\Programming\Own Projects\C#\rpg-xna-project\Animation Importer\obj\x86\Debug\Animation Importer.dll
+E:\Programming\Own Projects\C#\rpg-xna-project\Animation Importer\obj\x86\Debug\Animation Importer.pdb
+E:\Programming\Own Projects\C#\rpg-xna-project\Animation Importer\obj\x86\Debug\Animation Importer.csprojResolveAssemblyReference.cache
+F:\Programming\C#\rpg-xna-project\Animation Importer\bin\x86\Debug\Animation Importer.dll
+F:\Programming\C#\rpg-xna-project\Animation Importer\bin\x86\Debug\Animation Importer.pdb
+F:\Programming\C#\rpg-xna-project\Animation Importer\obj\x86\Debug\Animation Importer.csprojResolveAssemblyReference.cache
+F:\Programming\C#\rpg-xna-project\Animation Importer\obj\x86\Debug\Animation Importer.dll
+F:\Programming\C#\rpg-xna-project\Animation Importer\obj\x86\Debug\Animation Importer.pdb

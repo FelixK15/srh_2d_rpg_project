@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="25" tilewidth="16" tileheight="16">
+ <properties>
+  <property name="test" value="test"/>
+ </properties>
+ <tileset firstgid="1" name="City_1" tilewidth="16" tileheight="16">
+  <properties>
+   <property name="bla" value="bla"/>
+  </properties>
+  <image source="../Tilesets/City_1.png" trans="0084ff" width="480" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="test" value="test"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="test" value="test"/>
+   </properties>
+  </tile>
+  <tile id="48">
+   <properties>
+    <property name="ö" value=""/>
+   </properties>
+  </tile>
+  <tile id="78">
+   <properties>
+    <property name="kk" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="main" width="25" height="25">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoAxoE4EpBaTYQal9tPYPMebjswNZnlizSMHkupcSu6hlniEQG0GxMY3s8AfiACgOpFF85AJxHhTn0zgORjEE89HQDD4kTA07sJlFDbPx2UUt9w9U3JAbrsPFLnrFE73TCzY7cWF6hMFAYABjX44mxAkAAA==
+  </data>
+ </layer>
+ <objectgroup name="main" width="25" height="25">
+  <properties>
+   <property name="test" value="test"/>
+  </properties>
+  <object gid="35" x="160" y="144"/>
+  <object gid="35" x="224" y="224"/>
+  <object gid="35" x="176" y="208"/>
+  <object x="208" y="80" width="96" height="96">
+   <properties>
+    <property name="bla" value="babab"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="foreground1" width="25" height="25">
+  <properties>
+   <property name="test" value="test"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2TUQrDMAxDfaWu9+i2ezTb/f+WQgTC2HOcZvuqQBTa2A/FrojIvbo0v6rf0qfSapfqW/XqnFuS/XU/5ngsZLD6WzXH+Uf1M5HnWwavn3W2BAzvjrLzGWFkFTG25l8woL15tA+/9xjgRHmsPRCqW41vmgFvSaPuYPTMdh90lOGMeBYz9tOSNyOId0G7V9E/Br422D37GAl8bbDx1Myz4ux4aibzZmS1mMzj+54hi8f3fenSv/QBcsY1y8QJAAA=
+  </data>
+ </layer>
+</map>

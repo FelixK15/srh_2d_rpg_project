@@ -1,0 +1,102 @@
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\obj\Debug\ConsoleContext.csprojResolveAssemblyReference.cache
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Animations\Hero\Attack.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Animations\Hero\Walk_Down.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Animations\Hero\Walk_Left.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Animations\Hero\Walk_Right.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Animations\Hero\Walk_Up.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\stand_down.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\stand_left.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\stand_right.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\stand_up.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\walk_down.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\walk_left.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\walk_right.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\walk_up.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Tilesets\City_1.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Tilesets\metatileset.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\Menu\pic1.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\Menu\pic2.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\Menu\pic3.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\Menu\picker.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\actionbar.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\walk_down.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\walk_left.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\walk_right.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\walk_up.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\look_down.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\look_left.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\look_right.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\look_up.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Maps\TestMapByte64.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Maps\TestCity.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Fonts\Arial.xnb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\ConsoleContext.dll
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\ConsoleContext.pdb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\RpgGame.exe
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Game.dll
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.dll
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Graphics.dll
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\GameWorld Importer.dll
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Content.Pipeline.dll
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\RpgGame.pdb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Game.xml
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.xml
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Graphics.xml
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\GameWorld Importer.pdb
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Content.Pipeline.xml
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\obj\Debug\ConsoleContext.dll
+E:\Programming\Own Projects\C#\rpg-xna-project\ConsoleContext\obj\Debug\ConsoleContext.pdb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\ConsoleContext.dll
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\ConsoleContext.pdb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\RpgGame.exe
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Game.dll
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.dll
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Graphics.dll
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\GameWorld Importer.dll
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Content.Pipeline.dll
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\RpgGame.pdb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Game.xml
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.xml
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Graphics.xml
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\GameWorld Importer.pdb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Microsoft.Xna.Framework.Content.Pipeline.xml
+F:\Programming\C#\rpg-xna-project\ConsoleContext\obj\Debug\ConsoleContext.csprojResolveAssemblyReference.cache
+F:\Programming\C#\rpg-xna-project\ConsoleContext\obj\Debug\ConsoleContext.dll
+F:\Programming\C#\rpg-xna-project\ConsoleContext\obj\Debug\ConsoleContext.pdb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Animations\Hero\Walk_Down.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Animations\Hero\Walk_Left.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Animations\Hero\Walk_Right.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Animations\Hero\Walk_Up.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Animations\Hero\Attack_Down.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\stand_down.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\stand_left.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\stand_right.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\stand_up.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\walk_down.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\walk_left.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\walk_right.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\walk_up.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Tilesets\City_1.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Tilesets\metatileset.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\Menu\pic1.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\Menu\pic2.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\Menu\pic3.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\Menu\picker.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Overlays\actionbar.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\walk_down.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\walk_left.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\walk_right.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\walk_up.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\look_down.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\look_left.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\look_right.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\NPC1\look_up.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Characters\Hero\attack_down.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Maps\TestMapByte64.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Maps\TestCity.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Content\Fonts\Arial.xnb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Animation Importer.dll
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\Animation Importer.pdb
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\GameScripts\Characters\Default.cs
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\GameScripts\Enemies\Default.cs
+F:\Programming\C#\rpg-xna-project\ConsoleContext\bin\Debug\GameScripts\Weapons\Default.cs

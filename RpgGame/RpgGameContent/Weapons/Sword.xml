@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<Weapon Name="Sword">
+		<WalkAnimation Path="bla.xml" ID="left"/>
+		<WalkAnimation Path="bla.xml" ID="right"/>
+		<WalkAnimation Path="bla.xml" ID="top"/>
+		<WalkAnimation Path="bla.xml" ID="bottom"/>
+
+		<Level ID="0" Damage="10">
+			<Animation Path="bla.xml" ID="left"/>
+			<Animation Path="bla.xml" ID="right"/>
+			<Animation Path="bla.xml" ID="bot"/>
+			<Animation Path="bla.xml" ID="top"/>
+
+			<Attack ID="left">
+				<Areas> 
+					<Area duration="200" x="10" y="-10" width="10" height="10"/>
+					<Area duration="200" x="10" y="-5" width="10" height="10"/>
+					<Area duration="200" x="10" y="10" width="10" height="10"/>
+				</Areas>
+			</Attack>
+
+			<Attack ID="top">
+				<Areas> 
+					<Area duration="200" x="-10" y="-10" width="10" height="10"/>
+					<Area duration="200" x="-5" y="-10" width="10" height="10"/>
+					<Area duration="200" x="10" y="-10" width="10" height="10"/>
+				</Areas>
+			</Attack>
+
+			<Attack ID="bottom">
+				<Areas> 
+					<Area duration="200" x="10" y="10" width="10" height="10"/>
+					<Area duration="200" x="5" y="10" width="10" height="10"/>
+					<Area duration="200" x="-10" y="10" width="10" height="10"/>
+				</Areas>
+			</Attack>
+
+			<Attack ID="right">
+				<Areas> 
+					<Area duration="200" x="-10" y="10" width="10" height="10"/>
+					<Area duration="200" x="-10" y="-5" width="10" height="10"/>
+					<Area duration="200" x="-10" y="10" width="10" height="10"/>
+				</Areas>
+			</Attack>
+		</Level>
+	</Weapon>
+</xml>
