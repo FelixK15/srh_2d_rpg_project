@@ -76,7 +76,6 @@ namespace RpgGame
         private void UpdateManager(GameTime gameTime)
         {
             //all managers are getting updated.
-            InputManager.ProcessInput();
             EventManager.Update();
             ProcessManager.Update(gameTime);
             GraphicSettings.Camera.Update(gameTime);
@@ -109,12 +108,6 @@ namespace RpgGame
 
         protected override void Initialize()
         {
-            //Intialize the manager
-            ProcessManager.Initialize();
-            ScriptManager.Initialize();
-            BufferedInput.Initialize(Window);
-            GameStateMachine.Initialize();
-
             //GraphicsDevice of the GraphicManager needs to be set before calling the constructor.
             GraphicSettings.GraphicDevice   = GraphicsDevice;
             GraphicSettings.ClientWidth     = Window.ClientBounds.Width;
@@ -124,9 +117,17 @@ namespace RpgGame
             ContentManager = Content;
             Sprites = new SpriteBatch(GraphicsDevice);
 
+            BufferedInput.Initialize(Window);
+
             #if (DEBUG)
                 DeveloperConsole.Initialize();
             #endif
+
+            //Intialize the manager
+            InputManager.Initialize();
+            ProcessManager.Initialize();
+            ScriptManager.Initialize();
+            GameStateMachine.Initialize();
 
             //Create the camera.
             GraphicSettings.Camera              = new Camera(Window.ClientBounds.Height, Window.ClientBounds.Width);
