@@ -11,3 +11,19 @@ $ cat .gitignore
 
 *.csproj.user
 *.cachefile
+Animation Importer/obj/x86/Debug/Animation Importer.csproj.FileListAbsolute.txt
+ConsoleContext/bin/Debug/Content/Animations/Hero/Attack.xnb
+ConsoleContext/bin/Debug/Content/Animations/Hero/Walk_Down.xnb
+ConsoleContext/bin/Debug/Content/Animations/Hero/Walk_Left.xnb
+ConsoleContext/bin/Debug/Content/Animations/Hero/Walk_Right.xnb
+ConsoleContext/bin/Debug/Content/Animations/Hero/Walk_Up.xnb
+ConsoleContext/obj/Debug/ConsoleContext.csproj.FileListAbsolute.txt
+RpgGame/RpgGame/bin/x86/Debug/Content/Animations/Hero/Attack.xnb
+RpgGame/RpgGame/bin/x86/Debug/Content/Animations/Hero/Walk_Down.xnb
+RpgGame/RpgGame/bin/x86/Debug/Content/Animations/Hero/Walk_Left.xnb
+RpgGame/RpgGame/bin/x86/Debug/Content/Animations/Hero/Walk_Right.xnb
+RpgGame/RpgGame/bin/x86/Debug/Content/Animations/Hero/Walk_Up.xnb
+RpgGame/RpgGame/obj/x86/Debug/RpgGame.csproj.FileListAbsolute.txt
+RpgGame/RpgGame/obj/x86/Debug/cachefile-{D487BF63-9B0A-4BD8-954E-23C3B8DA1CBD}-targetpath.txt
+RpgGame/RpgGameContent/obj/x86/Debug/ContentPipeline.xml
+RpgGame/RpgGameContent/obj/x86/Debug/RpgGameContent.contentproj.FileListAbsolute.txt
