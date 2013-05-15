@@ -133,6 +133,9 @@
     <None Include="Scripts\Weapons\Default.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Compile Include="Input\InputController.cs" />
+    <Compile Include="Input\InputDevice.cs" />
+    <Compile Include="Input\InputKeyboard.cs" />
     <Compile Include="Manager\GameStateMachine.cs" />
     <Compile Include="Processes\PlayerAttackProcess.cs" />
     <None Include="Scripts\Weapons\TestSword.cs">
@@ -171,7 +174,6 @@
     <Compile Include="GameComponents\ScriptComponent.cs" />
     <Compile Include="Processes\SphericMoveProcess.cs" />
     <Compile Include="Tools\CompiledScript.cs" />
-    <Compile Include="Manager\GamePadInputManager.cs" />
     <Compile Include="Manager\GraphicSettings.cs" />
     <Compile Include="World\Layer.cs" />
     <Compile Include="Manager\EventManager.cs" />
@@ -186,8 +188,6 @@
     <Compile Include="GameComponents\RenderableComponent.cs" />
     <Compile Include="Tools\GameWorldLoader.cs" />
     <Compile Include="Manager\InputManager.cs" />
-    <Compile Include="Manager\KeyboardInputManager.cs" />
-    <Compile Include="Manager\MouseInputManager.cs" />
     <Compile Include="Manager\ScriptManager.cs" />
     <Compile Include="Processes\Process.cs" />
     <Compile Include="Manager\ProcessManager.cs" />

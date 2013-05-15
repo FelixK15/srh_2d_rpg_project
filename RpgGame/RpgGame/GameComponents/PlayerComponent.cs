@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using RpgGame.Events;
 using RpgGame.Manager;
 using RpgGame.Tools;
+using RpgGame.Input;
 
 namespace RpgGame.GameComponents
 {
@@ -180,23 +181,25 @@ namespace RpgGame.GameComponents
 
         private void _ProcessInput()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Up)){
+            InputDevice PlayerDevice = InputManager.GetDevice(Player);
+
+            if (PlayerDevice.IsPressed(InputDevice.Input.LEFT_BTN)){
+                Parent.Velocity = new Vector2(-2,Parent.Velocity.Y);
+            }
+
+            if (PlayerDevice.IsPressed(InputDevice.Input.RIGHT_BTN)){
+                Parent.Velocity = new Vector2(2,Parent.Velocity.Y);
+            }
+
+            if (PlayerDevice.IsPressed(InputDevice.Input.UP_BTN)){
                 Parent.Velocity = new Vector2(Parent.Velocity.X, -2);
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Down)){
+            if (PlayerDevice.IsPressed(InputDevice.Input.DOWN_BTN)){
                 Parent.Velocity = new Vector2(Parent.Velocity.X, 2);
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left)){
-                Parent.Velocity = new Vector2(-2, Parent.Velocity.Y);
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Right)){
-                Parent.Velocity = new Vector2(2, Parent.Velocity.Y);
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Space)){
+            if (PlayerDevice.IsPressed(InputDevice.Input.MENU_BTN)){
                 CollisionComponent component = Parent.GetComponent<CollisionComponent>();
                 if (component != null && !InteractionSwitch){
                     InteractionSwitch = true;
@@ -207,12 +210,12 @@ namespace RpgGame.GameComponents
                 InteractionSwitch = false;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.X)){
+            if (PlayerDevice.IsPressed(InputDevice.Input.ATTACK_CONFIRM_BTN)){
                 if(!AttackSwitch){
                     AttackSwitch = true;
                     Attack();
                 }
-            }else if (Keyboard.GetState().IsKeyUp(Keys.X)){
+            }else if (!PlayerDevice.IsPressed(InputDevice.Input.ATTACK_CONFIRM_BTN)){
                 if(AttackSwitch){
                     AttackSwitch = false;
                     if(AttackCounter > 100){
@@ -221,6 +224,5 @@ namespace RpgGame.GameComponents
                 }
             }
         }
-
     }
 }
