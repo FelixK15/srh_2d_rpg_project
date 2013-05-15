@@ -29,7 +29,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -59,9 +58,12 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
+    <Reference Include="Script Importer">
+      <HintPath>..\..\Script Importer\bin\x86\Debug\Script Importer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fonts\Bitmap\" />
+    <Folder Include="Fonts\" />
     <Folder Include="Music\" />
     <Folder Include="Sounds\" />
   </ItemGroup>
@@ -135,6 +137,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Scripts\test.cs">
+      <Name>test</Name>
+      <Importer>ScriptImporter</Importer>
+      <Processor>ScriptProcessor</Processor>
+    </Compile>
     <Compile Include="Tilesets\City_1.png">
       <Name>City_1</Name>
       <Importer>TextureImporter</Importer>
@@ -244,23 +251,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fonts\test.spritefont">
-      <Name>test</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+    <Compile Include="Maps\TestMapByte64.tmx">
+      <Name>TestMapByte64</Name>
+      <Importer>MapImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
-    <None Include="Maps\TestMapByte64.tmx">
-      <Name>TestMapByte64</Name>
-      <Importer>MapImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Maps\TestMapByte64.tmx">
-      <Name>TestMapByte64</Name>
-      <Importer>MapImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Maps\TestCity.tmx">
@@ -269,44 +264,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fonts\Arial.spritefont">
-      <Name>Arial</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+    <Compile Include="Maps\test.tmx">
+      <Name>test</Name>
+      <Importer>MapImporter</Importer>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dialog\Dialogs.xml">
-      <Name>Dialogs</Name>
-      <Importer>DialogImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Overlays\Dialog\border.png">
-      <Name>border</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Overlays\Dialog\dialog_background.jpg">
-      <Name>dialog_background</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Dialog Importer\Dialog Importer.csproj">
-      <Project>{51a3a76d-6b62-4a90-a95d-c1c2736a3543}</Project>
-      <Name>Dialog Importer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Overlays\Dialog\doublearrow.jpg">
-      <Name>doublearrow</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
+    <Compile Include="Maps\unbenannt.tmx">
+      <Name>unbenannt</Name>
+      <Importer>MapImporter</Importer>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

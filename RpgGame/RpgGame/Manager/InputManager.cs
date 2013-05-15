@@ -9,6 +9,7 @@ namespace RpgGame.Manager
     class InputManager
     {
         //Input States
+        
         static private KeyboardInputManager KeyboardManager { get; set; }
         static private MouseInputManager MouseManager { get; set; }
         static private GamePadInputManager GamePadManager { get; set; }

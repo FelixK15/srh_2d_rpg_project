@@ -187,6 +187,8 @@ namespace RpgGame.Tools
                     }
                 }
             }          
+
+            TilesetGraphic.Dispose();
         }
 
         private void _CreateLayer(XMLLayer InputLayer)
@@ -199,13 +201,11 @@ namespace RpgGame.Tools
 
             NewLayer.Name = InputLayer.Name;
 
-            RenderTarget2D LayerGraphic = new RenderTarget2D(GraphicSettings.GraphicDevice,
+            Texture2D LayerGraphic  = new Texture2D(GraphicSettings.GraphicDevice,
                                           InputLayer.Width * _World.TileWidth, InputLayer.Height * _World.TileHeight);
+            Color[] LayerPixels     = new Color[LayerGraphic.Width * LayerGraphic.Height];
 
-            GraphicSettings.GraphicDevice.SetRenderTarget(LayerGraphic);
-            GraphicSettings.GraphicDevice.Clear(Color.Transparent);
-
-            SpriteBatch Batch = new SpriteBatch(GraphicSettings.GraphicDevice);
+            Texture2DFiller.Fill(ref LayerGraphic,Color.Transparent);
             
             InputLayer.Data = InputLayer.Data.Replace("\n",String.Empty);
             InputLayer.Data = InputLayer.Data.Replace(" ",String.Empty);
@@ -223,18 +223,30 @@ namespace RpgGame.Tools
             //We need to decompress the data using the deflate stream
             GZipStream EncoderStream = new GZipStream(Stream,CompressionMode.Decompress);
 
-            //Begin to draw to the layer graphic
-            Batch.Begin();
-
             //Read decompressed data.
             BinaryReader Reader = new BinaryReader(EncoderStream);
+            
+            int Counter = 0;
             for(int i = 0;;++i){
                 try{
                     uint SingleData = Reader.ReadUInt32();
                     if(SingleData != 0){
                         //Get tile based on read data and draw it to the layer graphic
                         Texture2D Tile = Tiles.ElementAt<Texture2D>((int)(SingleData - 1));
-                        Batch.Draw(Tile, new Vector2(PosX, PosY), Color.White);
+
+                        //Get the pixels of the current tile.
+                        Color[] TilePixels = new Color[Tile.Height * Tile.Width];
+                        Tile.GetData<Color>(TilePixels);
+
+                        //Set the pixels of the tile in the layer graphic
+                        for(int y = PosY;y < _World.TileHeight + PosY;++y){
+                            for(int x = PosX;x < _World.TileWidth + PosX;++x){
+                                LayerPixels[y * _World.PixelWidth + x] = TilePixels[Counter++];
+                            }
+                        }
+
+                        Counter = 0;
+                        
 
                         //Add the tile coordinates to the layer boundaries for collision detection
                         NewLayer.Boundaries.Add(new Rectangle(PosX, PosY, _World.TileWidth, _World.TileHeight));
@@ -253,12 +265,9 @@ namespace RpgGame.Tools
                     break;
                 } 
             }
-
-            //Stop to draw after all data has been processed
-            Batch.End();
-
-            //Set the backbuffer as render target
-            GraphicSettings.GraphicDevice.SetRenderTarget(null);
+            
+            //set the layer graphic pixels
+            LayerGraphic.SetData<Color>(LayerPixels);
 
             //Close DeflateStream
             EncoderStream.Close();

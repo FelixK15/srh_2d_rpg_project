@@ -6,14 +6,15 @@ using System.Collections;
 using Microsoft.Xna.Framework;
 using RpgGame.Manager;
 using Microsoft.Xna.Framework.Graphics;
+using RpgGame.Tools;
 
 namespace RpgGame.GameComponents
 {
     public class AnimationComponent : BaseGameComponent
     {
-        private List<AbstractAnimation> AnimationList { get; set; }
-        private AbstractAnimation CurrentAnimation { get; set; }
-        public Color DrawColor { get; set; }
+        private List<AbstractAnimation> AnimationList       { get; set; }
+        private AbstractAnimation       CurrentAnimation    { get; set; }
+        public Color                    DrawColor           { get; set; }
 
         public AnimationComponent() : base("AnimationComponent")
         {
@@ -30,80 +31,99 @@ namespace RpgGame.GameComponents
         public AnimationComponent(List<AbstractAnimation> animList)
             : this()
         {
-            foreach (AbstractAnimation anim in animList)
-            {
+            foreach (AbstractAnimation anim in animList){
                 AnimationList.Add(anim);
             }
 
             CurrentAnimation = AnimationList.Last<AbstractAnimation>();
         }
 
-        public AbstractAnimation getAnimationPerName(string animationName)
+        public AbstractAnimation GetAnimationPerName(string animationName)
         {
             return AnimationList.Find(o => o.Name == animationName);
         }
 
-        public bool addAnimation(AbstractAnimation anim)
+        public bool AddAnimation(AbstractAnimation anim)
         {
-            if (AnimationList.Find(o => o.Name == anim.Name) != null) return false;
+            if (AnimationList.Find(o => o.Name == anim.Name) != null){
+                DeveloperConsole.AddMessage(DeveloperConsole.MessageType.ERROR,
+                String.Format("Didn't add animation '{0}' because there is already an animation with that name.",anim.Name));
+
+                return false;
+            }
             AnimationList.Add(anim);
             return true;
         }
 
-        public bool addAnimation(AbstractAnimation anim, bool removeAnimWithSameName)
+        public bool AddAnimation(AbstractAnimation anim, bool removeAnimWithSameName)
         {
-            if (removeAnimWithSameName)
-            {
+            if (removeAnimWithSameName){
                 AbstractAnimation prevAnim = AnimationList.Find(a => a.Name == anim.Name);
-                if (prevAnim != null)
-                {
+                if (prevAnim != null){
                     AnimationList.Remove(prevAnim);
                 }
             }
 
-            return addAnimation(anim);
+            return AddAnimation(anim);
         }
 
-        public bool setCurrentAnimation(string animationName)
+        public bool SetCurrentAnimation(string animationName)
         {
             AbstractAnimation anim = AnimationList.Find(o => o.Name == animationName);
-            if (anim == CurrentAnimation)
-            {
+            if (anim == CurrentAnimation){
                 return true;
             }
 
-            if (anim != null)
-            {
+            if (anim != null){
+                anim.CurrentAnimationIndex  = 0;
+                anim.TimeSinceLastFrame     = 0;
                 CurrentAnimation = anim;
                 CurrentAnimation.CurrentFrame = CurrentAnimation.FrameList.First<AnimationFrame>();
                 return true;
             }
+
+            DeveloperConsole.AddMessage(DeveloperConsole.MessageType.ERROR,String.Format("Could not find animation with the name '{0}'.",animationName));
             return false;
         }
 
-        public AbstractAnimation getCurrentAnimation()
+        public bool RemoveAnimation(string animationName)
+        {
+            AbstractAnimation anim = AnimationList.Find(o => o.Name == animationName);
+            if(anim == null){
+                DeveloperConsole.AddMessage(DeveloperConsole.MessageType.ERROR,String.Format("Could not remove animation with the name '{0}'\nbecause there's no animation with such name.",animationName));
+                return false;
+            }else{
+                AnimationList.Remove(anim);
+            }
+
+            return true;
+        }
+
+        public bool HasAnimation(string animationName)
+        {
+            return AnimationList.Find(a => a.Name == animationName) != null;
+        }
+
+        public AbstractAnimation GetCurrentAnimation()
         {
             return CurrentAnimation;
         }
            
         public override void Update(GameTime gameTime)
         {
-            if (CurrentAnimation != null)
-            {
+            if (CurrentAnimation != null){
                 CurrentAnimation.Update(gameTime);
-                if (CurrentAnimation.CurrentFrame != null)
-                {
-                    Parent.Width = CurrentAnimation.CurrentFrame.texture.Width;
-                    Parent.Height = CurrentAnimation.CurrentFrame.texture.Height;
+                if (CurrentAnimation.CurrentFrame != null){
+                    Parent.Width    = CurrentAnimation.CurrentFrame.Sprite.Width;
+                    Parent.Height   = CurrentAnimation.CurrentFrame.Sprite.Height;
                 }
             }
         }
 
         public override void Draw(ref SpriteBatch batch)
         {
-            if (CurrentAnimation.CurrentFrame != null)
-            {
-                batch.Draw(CurrentAnimation.CurrentFrame.texture, Position, DrawColor);
+            if (CurrentAnimation.CurrentFrame != null){
+                batch.Draw(CurrentAnimation.CurrentFrame.Sprite, Position, DrawColor);
             }
         }
     }

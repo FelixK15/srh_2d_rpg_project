@@ -8,7 +8,7 @@ using RpgGame.Processes;
 
 namespace RpgGame.Manager
 {
-    class ProcessManager
+    public class ProcessManager
     {
         public static List<Process> Processes
         {

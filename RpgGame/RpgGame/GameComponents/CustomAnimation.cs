@@ -9,22 +9,18 @@ namespace RpgGame.GameComponents
 {
     class CustomAnimation : AbstractAnimation
     {
-        public CustomAnimation(string name,string[] textureNames,double[] frameDuration, RepeatBehaviour repeatBehaviour)
+        public CustomAnimation(string name,string[] textureNames,int[] frameDuration, RepeatBehaviour repeatBehaviour)
             : base(name,repeatBehaviour)
         {
             for (int i = 0; i < textureNames.Length; ++i)
             {
                 AnimationFrame NewFrame = new AnimationFrame();
-                NewFrame.texture = RpgGame.ContentManager.Load<Texture2D>(textureNames[i]);
-                NewFrame.x = 0;
-                NewFrame.y = 0;
-                if (i > frameDuration.Length)
-                {
-                    NewFrame.duration = frameDuration.Last();
+                NewFrame.Sprite = RpgGame.ContentManager.Load<Texture2D>(textureNames[i]);
+                if (i > frameDuration.Length){
+                    NewFrame.Duration = frameDuration.Last();
                 }
-                else
-                {
-                    NewFrame.duration = frameDuration[i];
+                else{
+                    NewFrame.Duration = frameDuration[i];
                 }
 
                 FrameList.Add(NewFrame);

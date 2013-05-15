@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Loop="false">
+  <SpriteSources>
+    <SpriteSheetSource Path="attack_down.png" ID="0" SingleSpriteWidth="31" SingleSpriteHeight="45" SpriteAmount="4" />
+  </SpriteSources>
+  <Frames>
+    <Frame Duration="150">
+      <Sprites>
+        <Sprite X="0" Y="0" ID="1" />
+      </Sprites>
+    </Frame>
+    <Frame Duration="150">
+      <Sprites>
+        <Sprite X="15" Y="0" ID="2" />
+      </Sprites>
+    </Frame>
+    <Frame Duration="150">
+      <Sprites>
+        <Sprite X="15" Y="1" ID="3" />
+      </Sprites>
+    </Frame>
+    <Frame Duration="150">
+      <Sprites>
+        <Sprite X="13" Y="4" ID="4" />
+      </Sprites>
+    </Frame>
+  </Frames>
+</Animation>
