@@ -11,20 +11,22 @@ using RpgGame.Manager;
 using RpgGame.Menu;
 
 using System.Threading;
+using RpgGame.Input;
 
 namespace RpgGame.GameStates
 {
     class RingMenuState : IGameState
     {
-        public RingMenu CurrentMenu { get; set; }
+        public RingMenu CurrentMenu  { get; set; }
 
-        private bool ActionAllowed { get; set; }
+        private bool ActionAllowed   { get; set; }
+        private bool ButtonReleased  { get; set; }
         private Texture2D Background { get; set; }
         
         public RingMenuState(RingMenu startMenu)
         {
-            CurrentMenu = startMenu;
-            ActionAllowed = true;
+            CurrentMenu     = startMenu;
+            ActionAllowed   = true;
         }
 
         public void Start()
@@ -47,6 +49,13 @@ namespace RpgGame.GameStates
             foreach (GameObject go in CurrentMenu.Items)
             {
                 go.Update(gameTime);
+            }
+
+            InputDevice Device = InputManager.GetDevice(PlayerIndex.One);
+
+            if(Device.IsPressed(InputDevice.Input.MENU_BTN)){
+                GameStateMachine.RemoveTopState();
+                Device.WaitForRelease(InputDevice.Input.MENU_BTN);
             }
         }
 

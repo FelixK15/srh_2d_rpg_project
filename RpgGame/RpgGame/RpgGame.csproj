@@ -67,6 +67,10 @@
     <Reference Include="ConsoleContext">
       <HintPath>..\..\ConsoleContext\bin\Debug\ConsoleContext.dll</HintPath>
     </Reference>
+    <Reference Include="Dialog Importer, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ConsoleContext\bin\Debug\Dialog Importer.dll</HintPath>
+    </Reference>
     <Reference Include="GameWorld Importer">
       <HintPath>..\..\GameWorld Importer\bin\x86\Debug\GameWorld Importer.dll</HintPath>
     </Reference>
@@ -118,6 +122,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\Dialog.cs" />
+    <Compile Include="Dialogs\DialogBox.cs" />
+    <Compile Include="Dialogs\DialogNode.cs" />
     <Compile Include="Events\PlayerAttackEvent.cs" />
     <Compile Include="Events\InteractionEvent.cs" />
     <Compile Include="GameComponents\EnemyComponent.cs" />
@@ -133,6 +140,7 @@
     <None Include="Scripts\Weapons\Default.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Compile Include="GameStates\DialogState.cs" />
     <Compile Include="Input\InputController.cs" />
     <Compile Include="Input\InputDevice.cs" />
     <Compile Include="Input\InputKeyboard.cs" />
@@ -162,7 +170,9 @@
     <Compile Include="GameComponents\BaseGameComponent.cs" />
     <Compile Include="GameComponents\EventComponent.cs" />
     <Compile Include="Tools\DeveloperConsole.cs" />
+    <Compile Include="Tools\DialogLoader.cs" />
     <Compile Include="Tools\GameWorldLoaderExtensions.cs" />
+    <Compile Include="Tools\TextBoxCropper.cs" />
     <Compile Include="Tools\Texture2DFiller.cs" />
     <Compile Include="World\GameWorld.cs" />
     <Compile Include="Processes\EventProcess.cs" />

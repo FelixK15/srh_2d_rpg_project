@@ -58,7 +58,9 @@ namespace RpgGame.Manager
                 m_dEventListener.TryGetValue(eGameEvent.Type,out lsListener);
                 if(lsListener != null)
                 {
-                    foreach (IEventListener evListener in lsListener)
+                    IEventListener[] tmpArray = new IEventListener[lsListener.Count];
+                    lsListener.CopyTo(tmpArray);
+                    foreach (IEventListener evListener in tmpArray)
                     {
                         //Rufe jeden Listener auf für diesen Event Typ
                         evListener.HandleEvent(eGameEvent);

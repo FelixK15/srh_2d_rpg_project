@@ -21,8 +21,15 @@ namespace RpgGame.Input
             DOWN_BTN
         }
 
-        public PlayerIndex PlayerNo { get; set; }
+        public PlayerIndex PlayerNo     { get; set; }
+        public List<Input> ReleaseInput { get; set; }
 
+        public void WaitForRelease(InputDevice.Input input)
+        {
+            if(!ReleaseInput.Contains(input)){
+                ReleaseInput.Add(input);
+            }
+        }
         public abstract bool IsPressed(Input input);
         public abstract void Update();
     }

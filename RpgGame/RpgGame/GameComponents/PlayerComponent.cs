@@ -9,6 +9,8 @@ using RpgGame.Events;
 using RpgGame.Manager;
 using RpgGame.Tools;
 using RpgGame.Input;
+using RpgGame.GameStates;
+using RpgGame.Menu;
 
 namespace RpgGame.GameComponents
 {
@@ -199,7 +201,7 @@ namespace RpgGame.GameComponents
                 Parent.Velocity = new Vector2(Parent.Velocity.X, 2);
             }
 
-            if (PlayerDevice.IsPressed(InputDevice.Input.MENU_BTN)){
+            if (PlayerDevice.IsPressed(InputDevice.Input.ATTACK_CONFIRM_BTN)){
                 CollisionComponent component = Parent.GetComponent<CollisionComponent>();
                 if (component != null && !InteractionSwitch){
                     InteractionSwitch = true;
@@ -208,6 +210,11 @@ namespace RpgGame.GameComponents
             }
             else{
                 InteractionSwitch = false;
+            }
+
+            if(PlayerDevice.IsPressed(InputDevice.Input.MENU_BTN)){
+                GameStateMachine.AddState(new RingMenuState(new RingMenu(Parent.Position)));
+                PlayerDevice.WaitForRelease(InputDevice.Input.MENU_BTN);
             }
 
             if (PlayerDevice.IsPressed(InputDevice.Input.ATTACK_CONFIRM_BTN)){

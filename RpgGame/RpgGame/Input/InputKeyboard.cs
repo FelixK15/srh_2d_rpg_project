@@ -41,7 +41,24 @@ namespace RpgGame.Input
 
         public override void Update()
         {
+            List<Input> TempList = new List<Input>();
 
+            KeyboardState KeyState = Keyboard.GetState();
+
+            //Check if certain keys are released.
+            foreach(Input input in ReleaseInput){
+                foreach(InputKeyboardMapping Map in Mapping){
+                    if(Map.Input == input){
+                        if(KeyState.IsKeyUp(Map.Key)){
+                            TempList.Add(input);
+                        }
+                    }
+                }
+            }
+
+            foreach(Input input in TempList){
+                ReleaseInput.Remove(input);
+            }
         }
     }
 }

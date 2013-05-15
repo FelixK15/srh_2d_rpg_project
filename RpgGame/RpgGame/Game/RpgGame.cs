@@ -16,6 +16,7 @@ using RpgGame.Tools;
 using RpgGame.GameComponents;
 using RpgGame.Menu;
 using GameWorld_Importer.XML_Objects;
+using RpgGame.Dialogs;
 
 namespace RpgGame
 {
@@ -78,6 +79,7 @@ namespace RpgGame
             //all managers are getting updated.
             EventManager.Update();
             ProcessManager.Update(gameTime);
+            InputManager.Update();
             GraphicSettings.Camera.Update(gameTime);
         }
 
@@ -140,7 +142,11 @@ namespace RpgGame
         protected override void BeginRun()
         {
             GameWorldLoader Loader = new GameWorldLoader("Maps\\TestCity");
+            
+
             CurrentGameWorld = Loader.World;
+
+            DialogBox.Initialize(); 
 
             GameObject test = new GameObject("Player");
             test.Type = "Player";
@@ -207,6 +213,7 @@ namespace RpgGame
             MainLayer.Objects.Add(enemy);
 
             GameStateMachine.AddState(new GameWorldState(CurrentGameWorld));
+            //GameStateMachine.AddState(new DialogState(DLoader.Dialogs.ElementAt(0)));
         }
 
         private void _InitializeWorldLoader()

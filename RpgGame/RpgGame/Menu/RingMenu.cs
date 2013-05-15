@@ -30,7 +30,7 @@ namespace RpgGame.Menu
         {
             Position = position;
             Items = new List<GameObject>();
-            Picker = RpgGame.ContentManager.Load<Texture2D>("picker");
+            Picker = RpgGame.ContentManager.Load<Texture2D>("Overlays//Menu//picker");
             CurrentItemIndex = 0;
             Radius = 50;
         }

@@ -48,6 +48,15 @@ namespace RpgGame.Manager
             return null;
         }
 
+        public static void Update()
+        {
+            foreach(InputMapper DeviceMapper in InputDevices){
+                if(DeviceMapper.Device != null){
+                    DeviceMapper.Device.Update();
+                }
+            }
+        }
+
         private static void _MapInputFromFile()
         {
             FileStream InputFileStream = null;

@@ -29,7 +29,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -40,6 +39,9 @@
   <ItemGroup>
     <Reference Include="Animation Importer">
       <HintPath>..\..\Animation Importer\bin\x86\Debug\Animation Importer.dll</HintPath>
+    </Reference>
+    <Reference Include="Dialog Importer">
+      <HintPath>..\..\ConsoleContext\bin\Debug\Dialog Importer.dll</HintPath>
     </Reference>
     <Reference Include="GameWorld Importer">
       <HintPath>..\..\GameWorld Importer\bin\x86\Debug\GameWorld Importer.dll</HintPath>
@@ -64,11 +66,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fonts\Bitmap\" />
     <Folder Include="Music\" />
     <Folder Include="Sounds\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animations\Hero\Attack.xml">
+      <Name>Attack</Name>
+      <Importer>AnimationImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
     <Compile Include="Animations\Hero\Walk_Down.xml">
       <Name>Walk_Down</Name>
       <Importer>AnimationImporter</Importer>
@@ -242,30 +248,45 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maps\TestMapByte64.tmx">
-      <Name>TestMapByte64</Name>
-      <Importer>MapImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Maps\TestMapByte64.tmx">
-      <Name>TestMapByte64</Name>
-      <Importer>MapImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Maps\TestCity.tmx">
       <Name>TestCity</Name>
       <Importer>MapImporter</Importer>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fonts\Arial.spritefont">
-      <Name>Arial</Name>
+    <Compile Include="Fonts\arial.spritefont">
+      <Name>arial</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Fonts\test.spritefont">
+      <Name>test</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dialog\Dialogs.xml">
+      <Name>Dialogs</Name>
+      <Importer>DialogImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Overlays\Dialog\border.png">
+      <Name>border</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Overlays\Dialog\dialog_background.jpg">
+      <Name>dialog_background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Overlays\Dialog\doublearrow.jpg">
+      <Name>doublearrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
